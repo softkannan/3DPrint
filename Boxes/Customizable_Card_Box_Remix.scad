@@ -25,19 +25,19 @@
 /* [General] */
 
 // Choose what part you want to build
-part = "both"; // [both:Both, box:Box, lid:Lid]
+part = "box"; // [both:Both, box:Box, lid:Lid]
 // Deck width. Don't forget to leave some extra space.
-deck_width = 65; // [5:.1:500]
+deck_width = 150; // [5:.1:500]
 // Deck length. Don't forget to leave some extra space.
-deck_length = 95; // [5:.1:500]
+deck_length = 150; // [5:.1:500]
 // Coma separated deck thicknesses
-deck_thicknesses = [25];
+deck_thicknesses = [80];
 // Spacer between decks
 deck_spacer = .9; // [.1:.1:5]
 // Box lid height
 lid_height = 20; // [5:.1:100]
 // Wall thickness. Choose carefully so your printer can make at least 2 outlines at the narrowest part (top of the box and lid). For 0.4 nozzle this should be at least 1.6.
-wall_thickness = 1.8; // [0.2:.1:10]
+wall_thickness = 1.6; // [0.2:.1:10]
 // Space between lid and box top. The smaller this parameter will be, the tighter box will close.
 gap = .1; // [.0:0.02:1.0]
 // Depth of text and logo engrave. Depth < 0 will make relief.
@@ -95,6 +95,8 @@ logo_y_offset = 0; // [-100:0.1:100]
 // Logo scale in percentage of box size
 logo_scale = 70; // [0:0.1:100]
 
+enable_ender_hinge = true;
+
 /* [Hidden] */
 
 function isArray(v) = len(v) != undef;
@@ -104,6 +106,15 @@ function sum(v, i=0, j=100500) = len(v) > i && i <= j ? v[i] + sum(v, i+1, j) : 
 deck_height = sum(deck_thicknesses) + (len(deck_thicknesses) - 1) * deck_spacer;
 e = .01;
 walls = wall_thickness * 2;
+
+hingeOffset = sum(deck_thicknesses) - 6;
+
+module extrude_hook(h)
+{
+  points = [[-3,-3],[3,-3],[3,-1],[5,-1],[5,0.2],[1.5,3],[-1.5,3],[-5,0.2],[-5,-1],[-3,-1]];
+  linear_extrude(height=h)
+      polygon(points);
+}
 
 module logo(h) {
 	if (isArray(logo_data)) {
@@ -155,7 +166,20 @@ module box() {
 		{
 			cube([deck_width + walls, deck_height + walls, deck_length + walls - gap]);
 		}
-		translate([wall_thickness, wall_thickness, wall_thickness]) cube([deck_width, deck_height, deck_length + e]);
+		union()
+		{
+			translate([wall_thickness, wall_thickness, wall_thickness]) cube([deck_width, deck_height, deck_length + e]);
+			if(enable_ender_hinge)
+				translate([-0.9687,hingeOffset,5])
+				rotate([0,0,-90])
+				#extrude_hook(10);
+				translate([-0.9687,hingeOffset,60])
+				rotate([0,0,-90])
+				#extrude_hook(10);
+				translate([-0.9687,hingeOffset,100])
+				rotate([0,0,-90])
+				#extrude_hook(10);
+		}
 		translate([0, deck_height + walls, deck_length + walls]) rotate(a = 180, v = [1, 0, 0]) lid(1);
 	}
     if (len(deck_thicknesses) > 1) for (i=[0:len(deck_thicknesses) - 2]) translate([wall_thickness, wall_thickness + sum(deck_thicknesses, 0, i) + i * deck_spacer, wall_thickness]) cube([deck_width, deck_spacer, deck_length]);
@@ -172,9 +196,16 @@ module lid(forDifference = false) {
 	}
 }
 
-if (part == "box") translate([-deck_width / 2 - wall_thickness, -deck_height / 2 - wall_thickness, 0]) box();
-else if (part == "lid") translate([-deck_width / 2 - wall_thickness, -deck_height / 2 - wall_thickness, 0]) lid();
-else {
+if (part == "box") 
+{
+	translate([-deck_width / 2 - wall_thickness, -deck_height / 2 - wall_thickness, 0]) box();
+}
+else if (part == "lid") 
+{
+	translate([-deck_width / 2 - wall_thickness, -deck_height / 2 - wall_thickness, 0]) lid();
+}
+else 
+{
 	translate([-deck_width / 2 - wall_thickness, -deck_height - walls - 5, 0]) box();
 	translate([-deck_width / 2 - wall_thickness, 5, 0]) lid();
 }
