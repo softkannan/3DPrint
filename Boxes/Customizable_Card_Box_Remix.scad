@@ -1,29 +1,7 @@
-// Customizable Card Box v1.3
-// by Lufton (https://www.facebook.com/dubovikmax)
-// https://www.thingiverse.com/thing:2404395
-//
-// Thanks to:
-// Thingiverse user "Benjamin" for his "Stencil-o-Matic" https://www.thingiverse.com/thing:55821
-// Thingiverse user "TheNewHobbyist" for his "Card Case Customizer" https://www.thingiverse.com/thing:66327
-//
-// Change Log:
-//
-// 07/01/2017 - v1.3
-// - Fixed gap calculation, now gap decreasing both lid and box top thickness proportionally
-//
-// 06/29/2017 - v1.2
-// - Fixed spacers location calculation
-//
-// 06/28/2017 - v1.1
-// - Now you can divide your box with spacers
-// - Improve Customizer GUI 
-//
-// 06/26/2017 - v1.0
-// - Initial Release
+// Customizable Simple Box
 //
 
-/* [General] */
-
+<<<<<<< HEAD
 // Choose what part you want to build
 part = "box"; // [both:Both, box:Box, lid:Lid]
 // Deck width. Don't forget to leave some extra space.
@@ -126,46 +104,74 @@ module logo(h) {
 			translate([(deck_width + walls - logo_data[0][0] * s) / 2, (deck_length + walls - lid_height + logo_data[0][1] * s) / 2, 0]) scale([s, -s, 1]) translate([-minX, -minY, 0]) difference() {
 			union() for (i = [1:len(logo_data) - 1] ) if (logo_data[i][0]==1) linear_extrude(height = h) polygon(logo_data[i][1]);
 			translate([0, 0, -e]) for (i = [1:len(logo_data) - 1] ) if (logo_data[i][0]==0) linear_extrude(height = h + e * 2) polygon(logo_data[i][1]);
+=======
+// Choose Fix Type
+BoxFixType = "None"; // [None:None, Hook:Hook, Ender3:Ender3]
+// Choose Box Type
+BoxType = "Hinge"; // [Press:PressLid, Hinge:HingeLid]
+// Choose Hinge Type
+HingeTyp = "Build"; // [Build:Build, Metal:Metal]
+// Choose Part
+BuildPart = "Box"; // [Both:Both, Box:Box, Lid:Lid]
+// Box Innner Length
+BoxInnerLength = 65;
+// Box Innner Height
+BoxHeight = 95;
+// Box Width, Add Comma Seperated Values for Multi Compartments
+BoxInnerCompartmentWidth = [25];
+// Box Lid Height
+BoxLidHeight = 20;
+// Wall Thickness. Choose carefully so your printer can make at least 2 outlines at the narrowest BuildPart (top of the box and lid). For 0.4 nozzle this should be at least 1.6.
+BoxWallThickness = 0.8; // [0.2:.1:10]
+// Space between lid and box top. The smaller this parameter will be, the tighter box will close.
+LidGap = .5; // [.2:0.05:1.0]
+
+// Calculates the Total Inner Width by counting all the width entires
+function sum(v, i=0, j=20) = len(v) > i && i <= j ? v[i] + sum(v, i+1, j) : 0;
+
+totalBoxWidth = sum(BoxInnerCompartmentWidth) + (len(BoxInnerCompartmentWidth) - 1) * BoxWallThickness;
+// For Internal Use do not change, it there to OpenSCAD boolean operation to work, small number to create polygons properly
+smallOffset = .01;
+wallOffset = BoxWallThickness * 2;
+
+
+module BuildBox() 
+{
+	// Build Full Box
+	difference() 
+	{
+		// Box outer cube
+		cube([BoxInnerLength + wallOffset, totalBoxWidth + wallOffset, BoxHeight + wallOffset - LidGap]);
+		// Box inner cube
+		translate([BoxWallThickness, BoxWallThickness, BoxWallThickness])
+			cube([BoxInnerLength, totalBoxWidth, BoxHeight + smallOffset]); 
+			
+		if(BoxType == "Press")
+		{
+			//Build Box Side of Lid Lip
+			translate([0, totalBoxWidth + wallOffset, BoxHeight + wallOffset])
+				rotate(a = 180, v = [1, 0, 0])
+					BuildLid(true);
+>>>>>>> d73836465924a2e945744bfc313f0e112722c8ee
+		}
+		else if (BoxType == "Hinge")
+		{
+			//Cutout Top for openning
+			translate([-smallOffset, -smallOffset, BoxHeight + wallOffset - BoxWallThickness])
+				cube([BoxInnerLength + wallOffset + smallOffset * 2, totalBoxWidth + wallOffset + smallOffset * 2, 
+				BoxWallThickness + smallOffset]);
 		}
 	}
-}
-
-function halign(h) = h == "l"?"left":(h == "c"?"center":"right");
-
-function valign(v) = v == "t"?"top":(v == "c"?"center":"baseline");
-
-module textAndLogo() {
-		text_1OffsetX = (text_1_align[0]=="l"?0:(text_1_align[0]=="c"?deck_width / 2 + wall_thickness:deck_width + walls)) + text_1_x_offset;
-		text_1OffsetY = (text_1_align[1]=="t"?deck_length - lid_height + walls:(text_1_align[1]=="c"?(deck_length - lid_height) / 2 + wall_thickness:0)) + text_1_y_offset;
-		
-		translate([text_1OffsetX, engrave_depth, text_1OffsetY]) rotate(a = 90, v = [1, 0, 0]) linear_extrude(height = abs(engrave_depth) + e) text(text_1, halign = halign(text_1_align[0]), valign = valign(text_1_align[1]), size = text_1_size, font = (text_1_font=="***CUSTOM***"?text_1_custom_font:str(text_1_font, ":style=", text_1_font_style)));
-		
-		text_2OffsetX = (text_2_align[0]=="l"?0:(text_2_align[0]=="c"?deck_width / 2 + wall_thickness:deck_width + walls)) + text_2_x_offset;
-		text_2OffsetY = (text_2_align[1]=="t"?deck_length - lid_height + walls:(text_2_align[1]=="c"?(deck_length - lid_height) / 2 + wall_thickness:0)) + text_2_y_offset;
-		
-		translate([text_2OffsetX, engrave_depth, text_2OffsetY]) rotate(a = 90, v = [1, 0, 0]) linear_extrude(height = abs(engrave_depth) + e) text(text_2, halign = halign(text_2_align[0]), valign = valign(text_2_align[1]), size = text_2_size, font = (text_2_font=="***CUSTOM***"?text_2_custom_font:str(text_2_font, ":style=", text_2_font_style)));
-		
-	translate([logo_x_offset, engrave_depth, logo_y_offset]) rotate(a = 90, v = [1, 0, 0]) logo(abs(engrave_depth) + e);
-}
-
-module box() {
-	difference() {
-		 if(enable_engrave)
-		 {
-			 if (engrave_depth < 0) union() {
-				cube([deck_width + walls, deck_height + walls, deck_length + walls - gap]);
-				translate([0, -engrave_depth + e, 0]) textAndLogo();
-				if (mirror) rotate(a = 180, v = [0, 0, 1]) translate([-deck_width - walls, -deck_height - walls - engrave_depth + e, 0]) textAndLogo();
-			} else difference() {
-				cube([deck_width + walls, deck_height + walls, deck_length + walls - gap]);
-				textAndLogo();
-				if (mirror) rotate(a = 180, v = [0, 0, 1]) translate([-deck_width - walls, -deck_height - walls - e, 0]) textAndLogo();
-			} 
-		}
-		else
+	// Build inner partition if box has more compartment
+    if (len(BoxInnerCompartmentWidth) > 1)
+	{
+		for (i=[0:len(BoxInnerCompartmentWidth) - 2])
 		{
-			cube([deck_width + walls, deck_height + walls, deck_length + walls - gap]);
+			translate([BoxWallThickness, 
+				BoxWallThickness + sum(BoxInnerCompartmentWidth, 0, i) + i * BoxWallThickness, BoxWallThickness])
+				cube([BoxInnerLength, BoxWallThickness, BoxHeight]);
 		}
+<<<<<<< HEAD
 		union()
 		{
 			translate([wall_thickness, wall_thickness, wall_thickness]) cube([deck_width, deck_height, deck_length + e]);
@@ -181,21 +187,47 @@ module box() {
 				#extrude_hook(10);
 		}
 		translate([0, deck_height + walls, deck_length + walls]) rotate(a = 180, v = [1, 0, 0]) lid(1);
+=======
+>>>>>>> d73836465924a2e945744bfc313f0e112722c8ee
 	}
-    if (len(deck_thicknesses) > 1) for (i=[0:len(deck_thicknesses) - 2]) translate([wall_thickness, wall_thickness + sum(deck_thicknesses, 0, i) + i * deck_spacer, wall_thickness]) cube([deck_width, deck_spacer, deck_length]);
 }
 
-module lid(forDifference = false) {
-	k = forDifference?1:-1;
-	p = forDifference?1:0;
-	difference() {
-		translate([-e * p, -e * p, -e * p]) cube([deck_width + walls + 2 * e * p, deck_height + walls + 2 * e * p, lid_height + e]);
-		translate([wall_thickness / 2 + gap / 2 * k, wall_thickness / 2 + gap / 2 * k, wall_thickness]) {
-			cube([deck_width + wall_thickness - gap * k, deck_height + wall_thickness - gap * k, lid_height]);
+module BuildLid(buildMale = false) 
+{
+	if(BoxType == "Press")
+	{
+		innerLibBoxOffset = buildMale?1:-1;
+		outerLidBoxOffset = buildMale?1:0;
+		difference() 
+		{
+			translate([-smallOffset * outerLidBoxOffset, -smallOffset * outerLidBoxOffset,
+				-smallOffset * outerLidBoxOffset])
+				cube([BoxInnerLength + wallOffset + 2 * smallOffset * outerLidBoxOffset, 
+					totalBoxWidth + wallOffset + 2 * smallOffset * outerLidBoxOffset, BoxLidHeight + smallOffset]);
+			translate([BoxWallThickness / 2 + LidGap / 2 * innerLibBoxOffset,
+				BoxWallThickness / 2 + LidGap / 2 * innerLibBoxOffset, BoxWallThickness])
+				cube([BoxInnerLength + BoxWallThickness - LidGap * innerLibBoxOffset, 
+					totalBoxWidth + BoxWallThickness - LidGap * innerLibBoxOffset, BoxLidHeight]);
+		}
+	}
+	else if (BoxType == "Hinge")
+	{
+		difference() 
+		{
+			// Box outer cube
+			cube([BoxInnerLength + wallOffset, totalBoxWidth + wallOffset, BoxLidHeight + wallOffset - LidGap]);
+			// Box inner cube
+			translate([BoxWallThickness, BoxWallThickness, BoxWallThickness])
+				cube([BoxInnerLength, totalBoxWidth, BoxLidHeight + smallOffset]); 
+			//Cutout Top for openning
+			translate([-smallOffset, -smallOffset, BoxLidHeight + wallOffset - BoxWallThickness])
+				cube([BoxInnerLength + wallOffset + smallOffset * 2, 
+				totalBoxWidth + wallOffset + smallOffset * 2, BoxWallThickness + smallOffset]);
 		}
 	}
 }
 
+<<<<<<< HEAD
 if (part == "box") 
 {
 	translate([-deck_width / 2 - wall_thickness, -deck_height / 2 - wall_thickness, 0]) box();
@@ -208,4 +240,22 @@ else
 {
 	translate([-deck_width / 2 - wall_thickness, -deck_height - walls - 5, 0]) box();
 	translate([-deck_width / 2 - wall_thickness, 5, 0]) lid();
+=======
+if (BuildPart == "Box")
+{
+	translate([-BoxInnerLength / 2 - BoxWallThickness, -totalBoxWidth / 2 - BoxWallThickness, 0])
+		BuildBox();
+}
+else if (BuildPart == "Lid")
+{
+	translate([-BoxInnerLength / 2 - BoxWallThickness, -totalBoxWidth / 2 - BoxWallThickness, 0])
+		BuildLid();
+}
+else 
+{
+	translate([-BoxInnerLength / 2 - BoxWallThickness, -totalBoxWidth - wallOffset - 5, 0])
+		BuildBox();
+	translate([-BoxInnerLength / 2 - BoxWallThickness, 5, 0])
+		BuildLid();
+>>>>>>> d73836465924a2e945744bfc313f0e112722c8ee
 }
