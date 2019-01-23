@@ -1,0 +1,40 @@
+{
+    "header": {
+        "filament_id": "e2e6f76b-9332-4b99-b1c1-2b621341a794",
+        "filament_name": "PLA 1.75mm"
+    },
+    "override_slice_settings": true,
+    "settings": {
+        "filament_brand": "Generic",
+        "filament_density": 1240,
+        "filament_diameter": 1.75,
+        "filament_display_name": "[Generic] PLA 1.75mm",
+        "filament_flowrate": 100,
+        "filament_notes": "",
+        "filament_price": 20
+    },
+    "slice_settings": {
+        "cooling_fan_increase": true,
+        "cooling_min_layer_time": 20,
+        "cooling_min_speed": 15,
+        "cooling_printspeed_slowdown": true,
+        "extruder_switch_cooling_heatup_advance": false,
+        "extruder_switch_cooling_heatup_advance_temperature1": 200,
+        "extruder_switch_cooling_heatup_advance_time": 40,
+        "extruder_switch_cooling_inactive": false,
+        "extruder_switch_cooling_park_x": 30,
+        "extruder_switch_cooling_park_y": 295,
+        "extruder_switch_cooling_temperature1": 180,
+        "fan_blip_enable": true,
+        "fan_blip_pause_msec": 500,
+        "fan_blip_threshold": 100,
+        "fan_speed_list": "1;0;2;100",
+        "fan_speed_max": 100,
+        "temperature_bed_list": "1;60",
+        "temperature_extruder1": 240,
+        "temperature_extruder_list1": "1;240;2;235",
+        "temperature_heatbed": 60,
+        "temperature_list_enable": true
+    },
+    "version": 1
+}
