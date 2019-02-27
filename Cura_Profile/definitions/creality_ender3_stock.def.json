@@ -44,6 +44,9 @@
                 [30, 34]
             ]
         },
+		"machine_nozzle_size": {
+			"default_value": 0.5 
+		},
         "material_diameter": {
             "default_value": 1.75
         },
@@ -72,10 +75,10 @@
             "default_value": "brim"
         },
 		"wall_thickness": {
-            "value": "resolveOrValue('line_width') * 3"
+            "value": "resolveOrValue('wall_line_width') * 3.0"
         },
         "top_bottom_thickness": {
-            "value": "resolveOrValue('layer_height') * 5"
+            "value": "resolveOrValue('layer_height') * 5.0"
         },
         "retraction_amount": {
             "default_value": 4
@@ -99,7 +102,7 @@
             "default_value": 5
         },
 		"brim_width": {
-            "value": "resolveOrValue('line_width') * 6"
+            "value": "resolveOrValue('wall_line_width') * 6.0"
         },
 		"adaptive_layer_height_enabled": {
             "default_value": false
@@ -123,7 +126,7 @@
             "default_value": true
         },
 		"support_brim_width": {
-            "value": "resolveOrValue('line_width') * 6"
+            "value": "resolveOrValue('support_line_width') * 6.0"
         },
 		"support_skip_some_zags": {
             "default_value": true
@@ -147,7 +150,7 @@
             "default_value": true
         },
 		"material_print_temperature_layer_0": {
-            "value": "max(-273.15, material_print_temperature + 5)"
+            "value": "max(-273.15, material_print_temperature + 5.0)"
         },
 		"material_flow": {
             "default_value": 100
