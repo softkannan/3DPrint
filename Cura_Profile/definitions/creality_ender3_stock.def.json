@@ -54,16 +54,20 @@
             "default_value": true
         },
         "acceleration_print": {
-            "default_value": 800
+            "default_value": 500
         },
         "acceleration_travel": {
-            "default_value": 1200
+            "default_value": 800,
+			"value": 800
         },
+		"machine_acceleration": {
+			"default_value": 800
+		},
         "jerk_enabled": {
             "default_value": false
         },
         "jerk_travel": {
-            "default_value": 20
+            "default_value": 10
         },
         "layer_height": {
             "default_value": 0.12
@@ -153,7 +157,7 @@
             "value": "max(-273.15, material_print_temperature + 5.0)"
         },
 		"material_flow": {
-            "default_value": 100
+            "default_value": 93
         },
 		"material_flow_layer_0": {
             "value": 100
