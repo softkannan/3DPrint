@@ -44,30 +44,36 @@
                 [30, 34]
             ]
         },
-		"machine_nozzle_size": {
-			"default_value": 0.5 
-		},
+        "machine_nozzle_size": {
+            "default_value": 0.5,
+            "value": 0.5
+        },
         "material_diameter": {
-            "default_value": 1.75
+            "default_value": 1.75,
+            "value": 1.75
         },
         "acceleration_enabled": {
             "default_value": true
         },
         "acceleration_print": {
-            "default_value": 500
+            "default_value": 800,
+            "value": 800
         },
         "acceleration_travel": {
-            "default_value": 800,
-			"value": 800
+            "default_value": 1200,
+            "value": 1200
         },
-		"machine_acceleration": {
-			"default_value": 800
-		},
+        "machine_acceleration": {
+            "default_value": 800,
+            "value": 800
+        },
         "jerk_enabled": {
-            "default_value": false
+            "default_value": false,
+            "value": false
         },
         "jerk_travel": {
-            "default_value": 10
+            "default_value": 10,
+            "value": 10
         },
         "layer_height": {
             "default_value": 0.12
@@ -75,14 +81,32 @@
         "layer_height_0": {
             "default_value": 0.2
         },
-        "adhesion_type": {
-            "default_value": "brim"
-        },
-		"wall_thickness": {
+        "wall_thickness": {
             "value": "resolveOrValue('wall_line_width') * 3.0"
         },
         "top_bottom_thickness": {
             "value": "resolveOrValue('layer_height') * 5.0"
+        },
+        "fill_outline_gaps": {
+            "default_value": true
+        },
+        "fill_perimeter_gaps": {
+            "default_value": "everywhere"
+        },
+        "ironing_only_highest_layer": {
+            "default_value": true
+        },
+        "optimize_wall_printing_order": {
+            "default_value": true
+        },
+        "material_print_temperature_layer_0": {
+            "value": "max(-273.15, material_print_temperature + 5.0)"
+        },
+        "material_flow": {
+            "default_value": 93
+        },
+        "material_flow_layer_0": {
+            "value": 100
         },
         "retraction_amount": {
             "default_value": 4
@@ -90,14 +114,44 @@
         "retraction_speed": {
             "default_value": 40
         },
+        "retraction_hop": {
+            "default_value": 0.8
+        },
         "cool_min_layer_time": {
-            "default_value": 20
+            "default_value": 5
         },
-		"cool_min_layer_time_fan_speed_max": {
-            "default_value": 20
+        "cool_lift_head": {
+            "default_value": true
         },
-		"cool_min_speed": {
-            "default_value": 15
+        "speed_wall_x": {
+            "value": "speed_wall + 10"
+        },
+        "speed_infill": {
+            "value": "speed_wall + 10"
+        },
+        "speed_topbottom": {
+            "value": "speed_wall + 10"
+        },
+        "speed_layer_0": {
+            "value": "speed_wall - 5"
+        },
+        "zig_zaggify_infill": {
+            "default_value": true,
+            "value": true
+        },
+        "connect_infill_polygons": {
+            "default_value": true,
+            "value": true
+        },
+        "min_infill_area": {
+            "default_value": 0.0,
+            "value": "resolveOrValue('wall_line_width') * resolveOrValue('wall_line_width')"
+        },
+        "adhesion_type": {
+            "default_value": "brim"
+        },
+        "brim_width": {
+            "value": "resolveOrValue('wall_line_width') * 6.0"
         },
         "skirt_line_count": {
             "default_value": 3
@@ -105,71 +159,84 @@
         "skirt_gap": {
             "default_value": 5
         },
-		"brim_width": {
-            "value": "resolveOrValue('wall_line_width') * 6.0"
-        },
-		"adaptive_layer_height_enabled": {
+        "support_enable": {
             "default_value": false
         },
-		"adaptive_layer_height_variation_step": {
-            "default_value": 0.04
-        },
-		"bridge_settings_enabled": {
-            "default_value": true
-        },
-		"support_enable": {
-            "default_value": false
-        },
-		"support_type": {
+        "support_type": {
             "default_value": "buildplate"
         },
-		"support_angle": {
-            "default_value": 60
+        "support_angle": {
+            "default_value": 60,
+            "value": 60
         },
-		"support_z_distance" : {
-			"default_value": 0.165
-		},
-		"support_brim_enable": {
-            "default_value": true
+        "support_infill_rate" : {
+            "default_value": 12,
+            "value": 12
         },
-		"support_brim_width": {
+        "support_brim_enable": {
+            "default_value": true,
+            "value": true
+        },
+        "support_brim_width": {
             "value": "resolveOrValue('support_line_width') * 6.0"
         },
-		"support_skip_some_zags": {
-            "default_value": true
+        "support_z_distance" : {
+            "default_value": 0.2,
+            "value": 0.2
         },
-		"fill_outline_gaps": {
-            "default_value": true
+        "support_xy_distance" : {
+            "default_value": 0.8,
+            "value": 0.8
         },
-		"fill_perimeter_gaps": {
-            "default_value": "everywhere"
+        "support_xy_distance_overhang" : {
+            "default_value": 0.2,
+            "value": 0.2
         },
-		"infill_enable_travel_optimization": {
-            "default_value": true
-        },
-		"connect_infill_polygons": {
+        "support_interface_enable" : {
+            "default_value": true,
             "value": true
         },
-		"optimize_wall_printing_order": {
-            "default_value": true
+        "support_interface_density" : {
+            "default_value": 80,
+            "value": 80
         },
-		"skin_alternate_rotation": {
-            "default_value": true
+        "support_roof_line_distance" : {
+            "default_value": 0.5,
+            "value": 0.5
         },
-		"material_print_temperature_layer_0": {
-            "value": "max(-273.15, material_print_temperature + 5.0)"
+        "support_bottom_line_distance" : {
+            "default_value": 0.5,
+            "value": 0.5
         },
-		"material_flow": {
-            "default_value": 93
-        },
-		"material_flow_layer_0": {
-            "value": 100
-        },
-		"relative_extrusion": {
+        "relative_extrusion": {
             "value": true
+        },
+        "support_skip_some_zags": {
+            "default_value": true
+        },
+		"coasting_volume": {
+			"value": "3.141 * resolveOrValue('line_width') * resolveOrValue('line_width') * resolveOrValue('line_width')"
+		},
+		"coasting_min_volume": {
+			"value": "round(resolveOrValue('coasting_volume'),1)"
+		},
+        "skin_alternate_rotation": {
+            "default_value": true
+        },
+        "infill_enable_travel_optimization": {
+            "default_value": true
+        },
+        "adaptive_layer_height_enabled": {
+            "default_value": false
+        },
+        "adaptive_layer_height_variation_step": {
+            "default_value": 0.04
+        },
+        "bridge_settings_enabled": {
+            "default_value": true
         },
         "machine_start_gcode": {
-            "default_value": "; Ender 3 Custom Start G-code\nG28 ; Home all axes\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z0.3 F5000.0 ; Move to start position\nG1 X0.1 Y200.0 Z0.3 F1500.0 E15 ; Draw the first line\nG1 X0.4 Y200.0 Z0.3 F5000.0 ; Move to side a little\nG1 X0.4 Y20 Z0.3 F1500.0 E30 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\n; End of custom start GCode"
+            "default_value": "; Ender 3 Custom Start G-code\n; begin heating bed\nM140 S{material_bed_temperature}\nG28 ; Home all axes\n; begin heating nozzle\nM104 S{material_print_temperature_layer_0}\n; Wait for bed temp\nM190 S{material_bed_temperature}\n; Wait for nozzle temp\nM109 S{material_print_temperature_layer_0}\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X0.1 Y20 Z0.3 F5000.0 ; Move to start position\nG1 X0.1 Y200.0 Z0.3 F1500.0 E15 ; Draw the first line\nG1 X0.4 Y200.0 Z0.3 F5000.0 ; Move to side a little\nG1 X0.4 Y20 Z0.3 F1500.0 E30 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\n; End of custom start GCode"
         },
         "machine_end_gcode": {
             "default_value": "; Ender 3 Custom End G-code\nG4 ; Wait\nM220 S100 ; Reset Speed factor override percentage to default (100%)\nM221 S100 ; Reset Extrude factor override percentage to default (100%)\nG91 ; Set coordinates to relative\nG1 F1800 E-3 ; Retract filament 3 mm to prevent oozing\nG1 F3000 Z20 ; Move Z Axis up 20 mm to allow filament ooze freely\nG90 ; Set coordinates to absolute\nG1 X0 Y{machine_depth} F1000 ; Move Heat Bed to the front for easy print removal\nM84 ; Disable stepper motors\n; End of custom end GCode"
