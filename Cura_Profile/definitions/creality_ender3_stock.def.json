@@ -227,7 +227,7 @@
             "value": 0.5
         },
         "relative_extrusion": {
-            "value": false
+            "value": true
         },
         "support_skip_some_zags": {
             "default_value": true
