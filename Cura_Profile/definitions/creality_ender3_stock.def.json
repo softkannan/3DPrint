@@ -81,6 +81,24 @@
         "layer_height_0": {
             "default_value": 0.2
         },
+		"wall_line_width": {
+			"value": "round(resolveOrValue('line_width') * 0.98, 2)"
+		},
+		"skin_line_width": {
+			"value": "round(resolveOrValue('line_width') * 0.98, 2)"
+		},
+		"skirt_brim_line_width": {
+			"value": "round(resolveOrValue('line_width') * 1.125,2)"
+		},
+		"support_line_width": {
+			"value": "round(resolveOrValue('line_width') * 1.125,2)"
+		},
+		"support_interface_line_width": {
+			"value": "round(resolveOrValue('line_width') * 1.125,2)"
+		},
+		"infill_line_width": {
+			"value": "round(resolveOrValue('line_width') * 1.125,2)"
+		},
         "wall_thickness": {
             "value": "resolveOrValue('wall_line_width') * 3.0"
         },
