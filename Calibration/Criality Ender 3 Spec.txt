@@ -1,0 +1,16 @@
+Modeling Technology:FDM (Fused Deposition Modeling) 
+Printing Size:220*220*250mm 
+Machine Size:440*410*465mm 
+Package weight:8.6kg 
+Max Traveling Speed:180mm/s 
+Filament:1.75mm PLA 
+Input:AC 100-265V 50-60Hz 
+Output:DC 24V 15A 360W 
+Layer Thickness:0.1-0.4mm 
+Nozzle diameter:0.4mm 
+Precision:±0.1mm 
+File Format:STL,OBJ,G-Code 
+Working Mode:Online or SD offline 
+Max Nozzle Temperature:255? 
+Max Hot bed Temperature:110? 
+Resume print after power off: Yes
