@@ -1,0 +1,8 @@
+Manufacturer Part Number	17HS08-1004S
+Motor Type			Bipolar Stepper
+Step Angle			1.8°
+Holding Torque			13Ncm(18.4oz.in)
+Rated Current/phase		1.0A
+Phase Resistance		3.5ohms
+Recommended Voltage		12-24V
+Inductance			4.5mH±20%(1KHz)

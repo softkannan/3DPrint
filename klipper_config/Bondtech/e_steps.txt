@@ -1,0 +1,6 @@
+BMG is 415 steps per mm. (assumes 1/16th stepping and 1.8 degree stepper motor) That's what the N series is, A4988 stepper driver @1/16th stepping driving 1.8 degree motors.
+
+Stock Raise 3D from the factory = 94 steps/mm
+Current Bondtech mini upgrade = 140 steps/mm Current version for sale that reuses your stock motor
+Bondtech QR remote Bowden = 476.5 steps/mm Remote bowden as an option for the second extruder
+Bondtech BMG extruders = 415 steps/mm Newest version being tested in this thread (lightest possible option of all)
