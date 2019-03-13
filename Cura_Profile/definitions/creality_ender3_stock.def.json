@@ -56,16 +56,16 @@
             "default_value": true
         },
         "acceleration_print": {
-            "default_value": 800,
-            "value": 800
+            "default_value": 500,
+            "value": 500
         },
         "acceleration_travel": {
-            "default_value": 1200,
-            "value": 1200
+            "default_value": 500,
+            "value": 500
         },
         "machine_acceleration": {
-            "default_value": 800,
-            "value": 800
+            "default_value": 500,
+            "value": 500
         },
         "jerk_enabled": {
             "default_value": false,
@@ -127,13 +127,18 @@
             "value": 100
         },
         "retraction_amount": {
-            "default_value": 4
+            "default_value": 6.8,
+			"value": 6.8
         },
         "retraction_speed": {
-            "default_value": 40
+            "default_value": 60,
+			"value": 60
+        },
+		"retraction_prime_speed": {
+			"value": "resolveOrValue('retraction_speed') - 20"
         },
         "retraction_hop": {
-            "default_value": 0.8
+            "default_value": 0.04
         },
         "cool_min_layer_time": {
             "default_value": 5
