@@ -1,0 +1,64 @@
+########################creality_pla_#2####################################
+[general]
+version = 4
+name = PLA #2
+definition = fdmprinter
+ 
+[metadata]
+type = quality_changes
+setting_version = 4
+quality_type = draft
+ 
+[values]
+adaptive_layer_height_enabled = True
+adhesion_type = raft
+layer_height_0 = 0.26
+material_bed_temperature = 50
+support_enable = True
+ 
+#####################fdmextruder_#2_pla_#2######################################
+[general]
+version = 4
+name = PLA #2
+definition = fdmprinter
+ 
+[metadata]
+type = quality_changes
+setting_version = 4
+position = 0
+quality_type = draft
+ 
+[values]
+acceleration_print = 450
+acceleration_travel = 4500
+bottom_layers = 6
+infill_sparse_density = 15
+infill_sparse_thickness = 0.2
+infill_wipe_dist = 0.2
+ironing_enabled = True
+jerk_print = 10
+jerk_travel = 20
+material_print_temperature = 200
+material_print_temperature_layer_0 = 200
+optimize_wall_printing_order = True
+retract_at_layer_change = True
+retraction_amount = 7
+retraction_extra_prime_amount = 0.005
+retraction_hop = 0.8
+retraction_hop_enabled = True
+retraction_hop_only_when_collides = True
+retraction_min_travel = 0.4
+retraction_speed = 60
+skirt_line_count = 2
+speed_layer_0 = =speed_print * 30 / 60
+speed_print = 55
+speed_print_layer_0 = 20
+speed_topbottom = =speed_print / 2
+speed_travel_layer_0 = 30
+speed_wall = =speed_print / 2
+support_angle = 80
+support_infill_rate = 5
+top_bottom_pattern = zigzag
+top_bottom_thickness = 0.6
+top_layers = 6
+wall_thickness = 0.8

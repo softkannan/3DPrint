@@ -1,0 +1,60 @@
+{
+    "installed": {
+        "CuraDrive": {
+            "filename": "C:\\Users\\steck\\AppData\\Local\\cura\\3.4\\cache\\cura_packages\\CuraDrive.curapackage",
+            "package_info": {
+                "author": {
+                    "author_id": "Ultimaker",
+                    "display_name": "Ultimaker",
+                    "email": "plugins@ultimaker.com",
+                    "website": "https://ultimaker.com"
+                },
+                "description": "Backup and restore your configuration.",
+                "display_name": "Cura Backups",
+                "is_active": true,
+                "is_bundled": false,
+                "is_installed": false,
+                "package_id": "CuraDrive",
+                "package_type": "plugin",
+                "package_version": "1.1.0",
+                "sdk_version": 4,
+                "tags": [
+                    "plugin",
+                    "backups",
+                    "drive"
+                ],
+                "website": "https://github.com/Ultimaker/CuraDrivePlugin"
+            }
+        },
+        "OctoPrintPlugin": {
+            "filename": "C:\\Users\\steck\\AppData\\Local\\cura\\3.4\\cache\\cura_packages\\OctoPrintPlugin.curapackage",
+            "package_info": {
+                "author": {
+                    "author_id": "fieldOfView",
+                    "display_name": "fieldOfView",
+                    "website": "https://github.com/fieldofview"
+                },
+                "description": "Enables networked printing and monitoring with OctoPrint.",
+                "display_name": "OctoPrint Connection",
+                "package_id": "OctoPrintPlugin",
+                "package_type": "plugin",
+                "package_version": "3.4.1",
+                "sdk_version": 4,
+                "tags": [
+                    "plugin",
+                    "output",
+                    "gcode",
+                    "connected",
+                    "wifi",
+                    "octoprint",
+                    "fieldOfView",
+                    "foosel"
+                ],
+                "website": "https://github.com/fieldOfView/OctoPrintPlugin"
+            }
+        }
+    },
+    "to_install": {},
+    "to_remove": [],
+    "version": 1
+}
