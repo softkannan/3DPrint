@@ -1,0 +1,1 @@
+My current solution is using a very low max_accel_to_decel (500), and a faster square_corner_velocity (10). This allows me to run higher PA values and get reasonable results with bowden. My last few prints were good enough that I've considered staying with bowden, but at some point I'll probably switch to a direct extruder to avoid these issues.
