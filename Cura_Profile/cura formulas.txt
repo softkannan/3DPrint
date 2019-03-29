@@ -1,0 +1,33 @@
+speed_infill = =speed_print
+speed_wall = =speed_print / 2
+speed_wall_0 = =speed_wall
+speed_wall_x = =speed_wall * 2
+speed_topbottom = =speed_print / 2
+speed_roofing = =speed_topbottom
+
+speed_support = =speed_print
+speed_support_infill = =speed_support
+speed_support_interface = =speed_support / 1.5
+speed_prime_tower = =speed_print
+speed_layer_0 = =speed_print * 30 / 60
+speed_print_layer_0 = =speed_layer_0
+speed_travel_layer_0 = =speed_layer_0 * speed_travel / speed_print
+skirt_brim_speed = =speed_layer_0
+coasting_speed = =speed_print * 0.9
+wall_overhang_speed_factor = =max(cool_min_speed, speed_wall_0 / 2)
+bridge_wall_speed = =max(cool_min_speed, speed_wall_0 / 2)
+bridge_skin_speed = =max(cool_min_speed, speed_topbottom / 2)
+
+speed_ironing = =speed_topbottom * 20 / 30
+
+
+
+
+speed_print = 64
+speed_wall = 35
+speed_travel = 150
+speed_wall_x = =speed_wall + 10
+speed_infill = =speed_wall + 10
+speed_topbottom = =speed_wall + 10
+speed_layer_0 = =speed_wall - 5
+speed_support = =speed_wall_x
