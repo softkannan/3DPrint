@@ -1,10 +1,10 @@
 {
-    "id": "creality_ender3_stock_extruder_0",
+    "id": "creality_ender3_speed_extruder_0",
     "version": 2,
     "name": "Extruder 1",
     "inherits": "fdmextruder",
     "metadata": {
-        "machine": "creality_ender3_stock",
+        "machine": "creality_ender3_speed",
         "position": "0"
     },
 
