@@ -1,0 +1,2 @@
+G1 Z0.04 F500 ; Move KnownLocation + Z Offset value
+G92 Z0 ; Set this as KnownLocation
