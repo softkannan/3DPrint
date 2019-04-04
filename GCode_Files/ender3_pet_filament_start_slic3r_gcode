@@ -1,2 +1,0 @@
-G0 F1500 Z0.24 ;adjusted by z offset
-G92 Z0.2 ;consider this the original z before offset
