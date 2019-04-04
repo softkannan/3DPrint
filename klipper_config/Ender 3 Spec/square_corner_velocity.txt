@@ -1,0 +1,19 @@
+This is a notice that I plan to make a non-backwards compatible change to Klipper. I'm planning to replace the junction_deviation config parameter (and associated SET_VELOCITY_LIMIT parameter) with a square_corner_velocity parameter.
+
+The junction_deviation parameter controls the cornering speed between two moves. There is some discussion of this in the Kinematics document: https://github.com/KevinOConnor/klipper/blob/master/docs/Kinematics.md . This upcoming change will leave the fundamental cornering algorithm unchanged. However, instead of specifying junction_deviation, users will be able to customize the cornering speeds by setting square_corner_velocity (which is the maximum speed the toolhead may travel through a 90° corner); Klipper will internally calculate the equivalent junction_deviation from that given speed.
+
+The reason I plan to make this change is that I've found the junction_deviation to have several short-comings:
+
+It is effectively a "magic number" as there is little intuition that users can apply to pick a good value.
+The junction_deviation is combined with max_accel to determine actual cornering speeds, and this is not obvious. For example, a junction_deviation of .02 on a printer with max_accel=3000 would allow a 90° corner speed as high as ~12mm/s, but a junction_deviation=.02 and max_accel=4000 would allow a 90° corner speed of ~14mm/s. I fear users looking to tune max_accel may instead find artifacts from the inadvertent increase in cornering speed.
+The junction_deviation parameter has a non-linear impact to cornering speed and that is not obvious. For example, with junction_deviation=.02 and max_accel=3000, the max 90° corner speed is ~12mm/s, while junction_deviation=.01 and max_accel=3000 has 90° corner speed of ~8.5mm/s, while junction_deviation=.04 and max_accel=3000 has 90° corner speed of ~17mm/s. That is, doubling/halving the junction_deviation does not double/halve the cornering speeds, and I fear most users will find that surprising.
+I fear the default junction_deviation is too high to be a good default. I plan to replace the default junction_deviation=.02 with a default square_corner_velocity=5mm/s. In my tests, a small cornering velocity significantly reduces print times, while higher cornering velocities provide only a minor reduction in overall print time. In contrast, I fear higher cornering velocities are much more likely to result in print artifacts - a good default should balance the two. For example, tests with one particular print I had handy showed a total print time of 1:44:00 with square_corner_velocity=0, 1:25:00 with square_corner_velocity=5, 1:22:30 with square_corner_velocity=10, and 1:19:30 with square_corner_velocity=20.
+There are some disadvantages to making this change:
+
+It will break existing configurations that have set an explicit junction_deviation (and SET_VELOCITY_LIMIT scripts that have set an explicit junction_deviation).
+Klipper will deviate from Grbl and Smoothieware which otherwise use the same junction deviation algorithm.
+Given the advantages, however, my plan is to go forward with the change. My rough plan is to apply the change in about a week (approx July 15th). The code is available for early testing on the work-square-corner-velocity-20180708 branch:
+cd ~/klipper ; git fetch ; git checkout origin/work-square-corner-velocity-20180708 ; sudo service klipper restart
+
+For those who have customized junction_deviation and wish to find an equivalent square_corner_velocity, the following formula may be used:
+square_corner_velocity = sqrt(junction_deviation * max_accel * (sqrt(2) + 1))
