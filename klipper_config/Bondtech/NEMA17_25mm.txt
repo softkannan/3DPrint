@@ -6,3 +6,24 @@ Rated Current/phase		1.0A
 Phase Resistance		3.5ohms
 Recommended Voltage		12-24V
 Inductance			4.5mH±20%(1KHz)
+
+
+Electrical Specification
+Manufacturer Part Number: 17HS08-1004S
+Motor Type: Bipolar Stepper
+Step Angle: 1.8 deg
+Holding Torque: 13Ncm(18.4oz.in)
+Rated Current/phase: 1.0A
+Voltage: 3.5V
+Phase Resistance: 3.5ohms
+Inductance: 4.5mH ± 20%(1KHz)
+Physical Specification
+Frame Size: 42 x 42mm
+Body Length: 20mm
+Shaft Diameter: F5mm
+Shaft Length: 20mm
+D-cut Length: 16.5mm
+Number of Leads: 4
+Lead Length: 400mm
+Weight: 140g
+Connection

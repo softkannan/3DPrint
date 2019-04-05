@@ -14,27 +14,12 @@
         "filament_price": 20
     },
     "slice_settings": {
-        "cooling_fan_increase": true,
-        "cooling_min_layer_time": 20,
-        "cooling_min_speed": 15,
-        "cooling_printspeed_slowdown": true,
-        "extruder_switch_cooling_heatup_advance": false,
-        "extruder_switch_cooling_heatup_advance_temperature1": 200,
-        "extruder_switch_cooling_heatup_advance_time": 40,
-        "extruder_switch_cooling_inactive": false,
-        "extruder_switch_cooling_park_x": 30,
-        "extruder_switch_cooling_park_y": 295,
-        "extruder_switch_cooling_temperature1": 180,
-        "fan_blip_enable": true,
-        "fan_blip_pause_msec": 500,
-        "fan_blip_threshold": 30,
-        "fan_speed_list": "1;0;4;50",
-        "fan_speed_max": 100,
-        "temperature_bed_list": "1;85;2;90",
-        "temperature_extruder1": 230,
-        "temperature_extruder_list1": "1;230;2;240",
-        "temperature_heatbed": 90,
-        "temperature_list_enable": true
+        "fan_speed_list": "1;0;4;30",
+        "fan_speed_max": 50,
+        "filament_flow1": 90,
+        "support_overhang_angle": 75,
+        "temperature_extruder1": 235,
+        "temperature_heatbed": 70
     },
     "version": 1
 }
