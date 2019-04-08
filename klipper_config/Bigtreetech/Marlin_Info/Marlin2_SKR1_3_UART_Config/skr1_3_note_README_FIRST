@@ -1,0 +1,8 @@
+SKR1.3 info
+
+Base on pins_BIGTREE_SKR_V1.3h, HE1 = FAN2 on the marlin 2.0 frimware. DO take note!
+
+Frimware using Marlin2.0 bugifx vanilla-
+Enable= X,Y,Z,E UART / UBL / Fix Mount Probe (NON-BLTouch)/ BabyStep / Junction Devation / S curve /PID TUNE / SDSUPPORT / RAPRAP FULL GRAPHIC DISPLAY
+
+Not Frimware in "sample_test_fw" are for Testing UART and Menu function only... Do not run on printer, !!!AS Printer Param are not configure!!!

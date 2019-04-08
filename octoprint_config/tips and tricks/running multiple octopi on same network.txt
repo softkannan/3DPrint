@@ -1,0 +1,2 @@
+echo "octopi1" > /etc/hostname
+sed -i -e "s@octopi@octopi1@g" /etc/hosts
