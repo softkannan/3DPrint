@@ -1,0 +1,25 @@
+{
+    "header": {
+        "filament_id": "37b9272c-c881-4917-9911-57774aa7e626",
+        "filament_name": "PETG 1.75mm"
+    },
+    "override_slice_settings": true,
+    "settings": {
+        "filament_brand": "Generic",
+        "filament_density": 1380,
+        "filament_diameter": 1.75,
+        "filament_display_name": "[Generic] PETG 1.75mm",
+        "filament_flowrate": 100,
+        "filament_notes": "",
+        "filament_price": 20
+    },
+    "slice_settings": {
+        "fan_speed_list": "1;0;4;30",
+        "fan_speed_max": 50,
+        "filament_flow1": 90,
+        "support_overhang_angle": 75,
+        "temperature_extruder1": 235,
+        "temperature_heatbed": 70
+    },
+    "version": 1
+}
