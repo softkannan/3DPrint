@@ -1,10 +1,10 @@
 {
-    "id": "Ender3_Speed_0_5mm_nozzle_extruder_0",
+    "id": "ender3_speed_0_5mm_nozzle_extruder_0",
     "version": 2,
     "name": "Extruder 1",
     "inherits": "fdmextruder",
     "metadata": {
-        "machine": "Ender3_Speed_0_5mm_nozzle",
+        "machine": "ender3_speed_0_5mm_nozzle",
         "position": "0"
     },
 
