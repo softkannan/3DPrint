@@ -61,7 +61,7 @@ M190 S70 ; set bed temperature and wait
 M109 S235 ; block waiting for nozzle temp
 G28 ; home all axes with heated bed
 G21 ; set units to millimeters
-M204 P500 ; set acceleration
+M204 S500 ; set acceleration
 G90 ; use absolute coordinates
 M83 ; use relative distances for extrusion
 G92 E0 ; reset extruder distance
