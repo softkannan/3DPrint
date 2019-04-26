@@ -1,13 +1,13 @@
 ; ### Marlin K-Factor Calibration Pattern ###
 ; -------------------------------------------
 ;
-; Created: Tue Apr 23 2019 21:17:07 GMT-0500 (Central Daylight Time)
+; Created: Tue Apr 23 2019 21:18:38 GMT-0500 (Central Daylight Time)
 ;
 ; Settings Printer:
 ; Filament Diameter = 1.75 mm
 ; Nozzle Diameter = 0.6 mm
-; Nozzle Temperature = 235 °C
-; Bed Temperature = 70 °C
+; Nozzle Temperature = 210 °C
+; Bed Temperature = 60 °C
 ; Retraction Distance = 1 mm
 ; Layer Height = 0.4 mm
 ; Z-axis Offset = 0 mm
@@ -56,9 +56,9 @@
 ;
 ; prepare printing
 ;
-M104 S235 ; set nozzle temperature but do not wait
-M190 S70 ; set bed temperature and wait
-M109 S235 ; block waiting for nozzle temp
+M104 S210 ; set nozzle temperature but do not wait
+M190 S60 ; set bed temperature and wait
+M109 S210 ; block waiting for nozzle temp
 G28 ; home all axes with heated bed
 G21 ; set units to millimeters
 M204 S500 ; set acceleration
