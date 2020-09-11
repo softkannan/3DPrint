@@ -1,0 +1,12 @@
+Instructions:
+Backup your settings.
+Copy the files to their respective folders, and import the profile base.
+ 
+/resources/definitions
+/resources/extruder
+/resources/meshes
+/resources/variants
+ 
+Also includes the base profile, which is:
+Set for 0.16 Layer Height
+Tested with Cura 4.21

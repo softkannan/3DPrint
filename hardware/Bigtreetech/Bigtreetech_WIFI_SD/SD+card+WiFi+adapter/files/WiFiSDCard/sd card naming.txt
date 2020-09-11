@@ -1,0 +1,27 @@
+The SPI bus specifies four logic signals:
+
+    SCLK : Serial Clock (output from master).
+    MOSI : Master Output, Slave Input (output from master).
+    MISO : Master Input, Slave Output (output from slave).
+    S̅S̅ : Slave Select (active low, output from master).
+
+
+Alternative naming conventions are also widely used, and SPI port pin names for particular IC products may differ from those depicted in these illustrations:
+Serial Clock:
+
+    SCLK : SCK, CLK.
+
+
+Master Output → {\displaystyle \rightarrow } Slave Input:
+
+    MOSI : SIMO, SDI,[2] DI, DIN, SI, MTST.
+
+
+Master Input ← {\displaystyle \leftarrow } Slave Output:
+
+    MISO : SOMI, SDO,[2] DO, DOUT, SO, MRSR.
+
+
+Slave Select:
+
+    SS : nCS, CS, CSB, CSN, EN, nSS, STE, SYNC, SSQ.

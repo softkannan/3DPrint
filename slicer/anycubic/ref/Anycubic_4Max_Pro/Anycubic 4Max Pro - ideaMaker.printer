@@ -1,0 +1,65 @@
+{
+    "header": {
+        "machine_id": "04746d29-496d-47ef-8609-446509cec821",
+        "machine_type": "Anycubic 4Max Pro"
+    },
+    "override_slice_settings": false,
+    "settings": {
+        "clearance_settings": {
+            "clearance_extruder_settings": [
+                {
+                    "extruder": 0,
+                    "printhead_back_offset": 65,
+                    "printhead_front_offset": 59,
+                    "printhead_left_offset": 38,
+                    "printhead_right_offset": 46
+                },
+                {
+                    "extruder": 1,
+                    "printhead_back_offset": 0,
+                    "printhead_front_offset": 0,
+                    "printhead_left_offset": 0,
+                    "printhead_right_offset": 0
+                }
+            ],
+            "machine_gantry_height": 28
+        },
+        "machine_baudrate": 230400,
+        "machine_bed_shape": 0,
+        "machine_bed_temp_max": 110,
+        "machine_compensation_x": 100,
+        "machine_compensation_y": 100,
+        "machine_custom_printing_priority": true,
+        "machine_dim_x": 270,
+        "machine_dim_y": 205,
+        "machine_dim_z": 205,
+        "machine_distance_from_border": 0,
+        "machine_extruder_num": 1,
+        "machine_extruder_offset_x2": 25,
+        "machine_extruder_offset_y2": 0,
+        "machine_fan_control": true,
+        "machine_filament_1": 22,
+        "machine_filament_2": 18,
+        "machine_filament_name_1": "ABS - Black - Totalpack",
+        "machine_filament_name_2": "PLA",
+        "machine_firmware_type": "Marlin",
+        "machine_gcode_action": 0,
+        "machine_gcode_e_multiply_flow": false,
+        "machine_heat_bed": true,
+        "machine_m1001_code": "",
+        "machine_m1002_code": "",
+        "machine_m2000_code": "",
+        "machine_nozzle_diameter": 0.40000000596046448,
+        "machine_nozzle_diameter_2": 0.40000000596046448,
+        "machine_nozzle_temp_max_1": 235,
+        "machine_nozzle_temp_max_2": 235,
+        "machine_omit_raisetouch_code": true,
+        "machine_stepe": 0,
+        "machine_validate_printing_priority": true,
+        "machine_virtual_extruder_offset_x2": 25,
+        "machine_virtual_extruder_offset_y2": 0
+    },
+    "slice_settings": {
+    },
+    "version": 1
+}
