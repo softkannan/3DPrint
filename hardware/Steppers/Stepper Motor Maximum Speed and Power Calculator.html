@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://daycounter.com/Calculators/Stepper-Motor-Calculator.phtml -->
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Stepper Motor Maximum Speed and Power Calculator</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<script>
+		function Compute(form) {
+			with(Math) {
+				var Kilo = 1000;
+				var Precision = 3;
+				var R1;
+
+				var V = Number(form.V.value);
+				var Imax = Number(form.Imax.value);
+				var Steps = Number(form.Steps.value);
+				var L = Number(form.L.value) / Kilo;
+				T = L * Imax * 2 / V;
+				Speed = V / (L * 2 * Imax * Steps);
+				P = V * Imax;
+				form.T.value = T.toPrecision(Precision) * Kilo;
+				form.Speed.value = Speed.toPrecision(Precision);
+				form.P.value = P.toPrecision(Precision);
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<p class="error" id="error_msg_p"></p>
+		<div class="content">
+			<div class="row">
+				<div class="col-sm-8">
+					<h1 class="page-title">Stepper Motor Maximum Speed and Power Calculator</h1>
+					<!-- Content Start  -->
+					<p>
+						Stepper motors are normally used for positioning, and are
+						not known for their speed. This calculator computes the maximum speed
+						of a stepper motor, which is limited by the time it takes for the coil
+						to energize to it's maximum holding current, and then de-energize as polarity flips.
+					</p>
+					<br>
+					<form method="post" name="ParamForm">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<th colspan="2">Input:</th>
+								</tr>
+								<tr>
+									<td>Imax</td>
+									<td><input type="text" name="Imax" size="17"> (A)</td>
+								</tr>
+								<tr>
+									<td>L</td>
+									<td><input type="text" name="L" size="17" autocomplete="off"> (mH)</td>
+								</tr>
+								<tr>
+									<td>Voltage</td>
+									<td><input type="text" name="V" size="17"> (V)</td>
+								</tr>
+								<tr>
+									<td>Steps/Revolution</td>
+									<td><input type="text" name="Steps" size="17" value="200"> Steps</td>
+								</tr>
+								<tr>
+									<th colspan="2" class="text-center">
+										<input type="button" value="Compute" name="B1"
+											onclick="Compute(document.ParamForm);">
+									</th>
+								</tr>
+								<tr>
+									<th colspan="2">Result:</th>
+								</tr>
+								<tr>
+									<td>Maximum Speed</td>
+									<td><input type="text" name="Speed" size="17"> (revolutions/sec)</td>
+								</tr>
+								<tr>
+									<td>Minimum Time/Step</td>
+									<td><input type="text" name="T" size="17"> (milliseconds)</td>
+								</tr>
+								<tr>
+									<td>Maximum Power</td>
+									<td><input type="text" name="P" size="17"> (Watts)</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+
+					<br>
+					<h3>Equations:</h3>
+					<p>Current through the coil is proportional to the time that the voltage has been applied, and
+						inversely proportional to the inductance.
+					</p>
+					<p>I= V*T/L</p>
+					<p>T= I*L/V</p>
+					<p>For one step the current must go from 0 to Imax and back to 0, or alternatively from -Imax to
+						+Imax.</p>
+					<p>I= 2*Imax</p>
+					<p>T= L*Imax*2/V</p>
+					<p>T is the number of seconds for a single step.</p>
+					<p>To compute maximum revolutions per second - divide seconds per step by steps per revolution.</p>
+					<p>Rev/sec = V/(L*2*Imax)/(steps/rev)</p>
+					<p>Pmax= 2*Imax*V</p>
+					<p> Pmax occurs not when the motor is going max speed because the current is a triangle wave.
+						Pmax occurs when the slope of the current is small compared to the on holding time of the step
+						pulse.
+					</p>
+
+
+					<!-- Content End  -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+		</div>
+
+		<div class="col-sm-8">
+			<p class="fine-print text-center">© Copyright 2019 Daycounter, Inc. All rights Reserved.
+				There is no guarantee for any information on this website. Use at your own risk.
+			</p>
+		</div>
+		<div class="col-sm-2">
+		</div>
+	</div>
+
+
+</body>
+
+</html>

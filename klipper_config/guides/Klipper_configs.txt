@@ -1,0 +1,171 @@
+FYI: klipper has caselighting control built-in, you just need a [output_pin caselight] section (not case_light or case-light, it has to be precisely caselight), this will add a lighting control section in the Control menu on your display. Here's an example:
+[output_pin caselight]
+pin: ar5
+pwm: true
+hardware_pwm: true
+cycle_time: 0.001
+value: 0.1
+
+
+Quick explanation of current setting on tmc drivers. the value you put in shuld be the RMS value. not peak value that is written on the stepper.
+The calculation of rms from peak current is this:
+
+Motor_Peak_Current x 0.707
+
+And since we dont wanna push the motors with 100% we do:
+
+Motor_Peak_Current x 0.707 x 0.80
+
+that will make a 20% safety margin.
+
+so a stock ender 3 motor that is 0.84A peak 
+
+0.84x0.707x0.8 = 0.47A 
+
+so you put 0.47 in run_current of your tmc stepper. 
+
+A normal 1.4A stepper is:
+
+1.4x0.707x0.8 = 0.79A
+
+so you put 0.79 in run_current of your tmc stepper. 
+
+the Hold current there is no "rule" about. i like to do Run_Current - 0.2
+but that will depend on the use case.
+@Julietta wanna pin? ^^
+
+
+To Calibrate Z Probe Offset
+
+PROBE_CALIBRATE
+ will start the tool. It will wait for you to command it to move up or down.
+TESTZ
+ moves the nozzle a specified distance
+These measurements are relative not absolute. 
+TESTZ  Z=1
+ will move the nozzle up 1mm from where it is
+TESTZ Z= -.04
+ will move the nozzle down .04mm from where it currently is
+
+You move the nozzle up and down over some paper  until it starts to grab.
+then SAVE_CONFIG
+
+IF YOU ARE RUNNING OCTOKLIPPERR PLUGIN AND GO TO CHECK YOUR CONFIG IT WILL NOT SHOW UP IN THE OCTOKLIPPER PLUGIN UNTIL YOU REFRESH THE WEB PAGE
+
+this is because the octoklipper caches the config file from the last time you loaded the page and when the firmware saves printer.cfg, OctoKlipper doesn't know so it just displays what it already has in memory
+if you open octklipper and then save the config there, you will overwrite anything you just autoconfiged
+This is not a fault of Klipper but the OctoKlipper plugin so complain to the developer of that if you want it changed. It hasn't seen any action in a while so good luck.
+most of this is reflected in the docs anyway so nothing new but it, at least to me, is pretty simple to do and it works(edited)
+[3:52 PM]
+I think people are just used to how ass backwards marlin is so they just over complicate everything
+
+
+
+
+[gcode_macro PRINT_START]
+#   Use PRINT_START for the slicer starting script - please customise for your slicer of choice
+default_parameter_BED_TEMP: 101
+default_parameter_EXTRUDER_TEMP: 235
+gcode:
+    M117 Heating...
+    M140 S{BED_TEMP}                         ; set bed final temp
+    M104 S{EXTRUDER_TEMP}                         ; set extruder final temp
+    M190 S{BED_TEMP}                         ; wait for bed final temp
+    M109 S{EXTRUDER_TEMP}                         ; wait for extruder final temp
+    M900
+    G21 ; set units to millimeters
+    G90 ; use absolute coordinates
+    M83 ; use relative distances for extrusion
+    G32                            ; home all axes
+    G1 Z20 F3000                   ; move nozzle away from bed
+	
+By default, slicers will put heating commands either entirely before or after PRINT_START. You have to pass the temps TO PRINT_START in order to control when they happen. 
+For example I don’t want my nozzle to heat until the very end so it’s not oozing during QGL, mesh etc.
+
+Example macro:
+[gcode_macro PRINT_START]
+gcode:        
+    # Parameters
+    {% set BED = params.BED|int %}
+    {% set HOTEND = params.HOTEND|int %}
+    {% set CHAMBER = params.CHAMBER|default(0)|int %}
+    
+    # <insert routines>
+    M190 S{BED}                                                              ; wait for bed temp
+    TEMPERATURE_WAIT SENSOR="temperature_sensor chamber" MINIMUM={CHAMBER}   ; wait for chamber temp
+    # <insert routines>
+    M109 S{HOTEND}                                                           ; wait for hotend temp
+    # <insert routines / nozzle clean>
+    G28 Z                                                                    ; final z homing with hot nozzle
+
+This would now be run like PRINT_START BED=110 HOTEND=240 CHAMBER=50. 
+Chamber defaults to 0 if not specified - see parameters section.
+
+Then in the slicer you would put this as your start gcode, so it subs in the slicer’s configured variables: 
+
+     SuperSlicer:
+     PRINT_START BED=[first_layer_bed_temperature] HOTEND=[first_layer_temperature] CHAMBER=[chamber_temperature]
+
+     Prusa Slicer (doesn’t support chamber temp):
+     PRINT_START BED=[first_layer_bed_temperature] HOTEND=[first_layer_temperature]
+
+     Cura:
+     PRINT_START BED={material_bed_temperature_layer_0} HOTEND={material_print_temperature_layer_0} CHAMBER={build_volume_temperature}
+
+If you don’t use a chamber thermistor, just remove the chamber stuff.
+
+
+To enable Octoprint compatibility with slicer uploads it is now required to add [octoprint_compat] to moonraker.conf. After making this change it is necessary to restart the Moonraker service so the module is loaded.
+
+
+
+
+For those who want to use screws to level their Switchwire bed, this is an approximate location of the screws.
+
+[screws_tilt_adjust]
+# SW Nylock Mod: Screw 1 uses the 6mm metallic spacer so its
+# height is considered the baseline. For tilt adjust using the
+# command SCREWS_TILT_CALCULATE, this has to be your Screw 1:
+#
+#         ******************
+#         * S7    S8    S9 *
+#         *                * 
+#   Bed:  * S5    S1    S6 *  
+#         *                *
+#         * S2    S3    S4 *
+#         ******************
+#
+screw1: 128,110
+screw1_name: center
+screw2: 18,5
+screw2_name: front_left
+screw3: 128,5
+screw3_name: front_center
+screw4: 233,5
+screw4_name: front_right
+screw5: 18,110
+screw5_name: middle_left
+screw6: 233,110
+screw6_name: middle_right
+screw7: 18,215
+screw7_name: rear_left
+screw8: 128,215
+screw8_name: rear_center
+screw9: 233,215
+screw9_name: rear_right
+horizontal_move_z: 10.
+speed: 50.
+screw_thread: CCW-M3
+
+
+The results should be something like this
+
+08:35:49 // center (Base): X 128.0, Y 110.0, Z 2.02500
+08:35:49 // front_left : X 18.0, Y 5.0, Z 2.11250 : Adjust -> CCW 00:11
+08:35:49 // front_center : X 128.0, Y 5.0, Z 2.02500 : Adjust -> CW 00:00
+08:35:49 // front_right : X 233.0, Y 5.0, Z 2.07500 : Adjust -> CCW 00:06
+08:35:49 // middle_left : X 18.0, Y 110.0, Z 2.08750 : Adjust -> CCW 00:07
+08:35:49 // middle_right : X 233.0, Y 110.0, Z 1.98750 : Adjust -> CW 00:05
+08:35:49 // rear_left : X 18.0, Y 215.0, Z 2.05000 : Adjust -> CCW 00:03
+08:35:49 // rear_center : X 128.0, Y 215.0, Z 1.40000 : Adjust -> CW 01:15
+08:35:49 // rear_right : X 233.0, Y 215.0, Z 2.05000 : Adjust -> CCW 00:03

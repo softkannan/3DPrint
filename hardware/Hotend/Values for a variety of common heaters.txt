@@ -1,0 +1,7 @@
+Values for a variety of common heaters
+
+Watts    12v       24v
+50w    2.88Ω    11.52Ω
+40w    3.6Ω       14.4Ω
+30w    4.8Ω      19.2Ω
+25w    5.76Ω    23.04Ω(edited)

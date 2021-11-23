@@ -1,0 +1,19 @@
+Settings for baseline print form
+_________________________________________________________________________
+
+All changes are marked in the gcode with 'custom' at the end of each line. Open the gcode in a text editor and search for this to your inputs if needed.
+
+
+Bed: 100 x 100 mm
+
+Temperatures:
+Bed: 60 deg C
+Hot end: 200 deg C
+
+
+Part Cooling: 100% fan from layer 2
+
+ABL: No ABL
+
+Retraction distance: 5 mm
+Retraction speed: 40 mm/sec

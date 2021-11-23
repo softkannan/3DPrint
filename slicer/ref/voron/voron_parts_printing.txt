@@ -1,0 +1,30 @@
+If you haven’t already, check out the Voron Discord. It has the info you’re looking for and much more. Here’s a quick copy paste from Volcom:
+
+Q) What are the recommended print settings for Voron parts?
+
+A)
+
+0.2mm layer height, force .4mm extrusion width, 40% infill, 4 perimeters, and 5 top/bottom layers.
+
+The following parts should be 5 perimeters, 8 top and bottom layers and 50% infill: xy_topbrace_left, xy_topbrace_right, idler_frame_left_lower/upper, and idler_frame_right_lower/upper. These only appear on V2 Printers
+
+Supports are not required.
+
+Recommended Infill Pattern is Fast Honeycomb in S3D, other valid infill is as follows: Gyroid, Cubic, Grid and Triangle.
+
+Tested Slicers are as follows: S3D, PrusaSlicer, Cura, and KISS
+
+We do not recommend using Pathio to slice your parts.
+
+Approved filament is either ABS or ABS+.
+
+No, PETG will not work. Dont use polycarbonate or nylon either, machines have failed with these materials catastrophically.
+
+Filled filaments make your shit look awesome, but much more prone to layer separation, dont use them
+
+No annealed PLA, its too brittle and has absolutely shit tolerances after the annealing process.
+
+Standard PLA is only acceptable on items outside the chamber; ie: display housing, skirts, panel clips, handles.
+
+Do not print any of the motion system in anything but ABS.
+

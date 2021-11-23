@@ -1,0 +1,81 @@
+#speedboatrace run on a (slightly) modified Ender 3.
+
+Sorry about the noise, the camera is literally taped to the floor fan cooling the setup. I've reduced it as much as possible, to leave the sound of the printer somewhat clean.
+
+If you want to get in on the fun, join the Speedboat Race on the Annex Engineering Discord: https://discord.gg/MzTR3z
+
+The toolhead used is a custom design, it's available here:
+https://cad.onshape.com/documents/027...
+The ducts are CFD optimized for volumetric air flow.
+
+Slicer: IdeaMaker
+Firmware: Klipper, customized
+Controller: SKR E3 Turbo
+
+Speed: Default 300, infill 120, travel 600(unlimited), X max 300, Y max 300, Z 35 mm/s
+Accel: overall 43000, X 36000, Y 26000, Z 1800 mm/s/s
+Accel to decel: 43000(disabled)
+Square corner velocity: 80 mm/s
+Hotend: Phaetus Dragon HF
+Nozzle: E3D Nozzle X 0.4mm
+Filament: Filamentone ASA
+Temperature: 300C hotend, 95C bed
+Cooling: Dual Sunon 5015, external floor fan(30c ambient temp)
+Motors: Stock E3
+System voltage: 24V
+Run current: XY 1.01A RMS(95% rated), Z 0.84A RMS(80% rated)
+
+Mods:
+
+Lasse Dalegaard
+3 weeks ago
+X axis linear rail, custom toolhead, Sherpa Mini extruder, Dragon HF hotend, flexible coupler for Z rod, SKR E3 Turbo, Quickdraw probe. I think that's all of it. Sounds like more than it is when listing it :-)
+bed springs with stiffer ones(just realized I had done that)
+
+
+
+#speedboatrace run on a (slightly) modified Ender 3 (6.41)
+
+
+Filament: PLA 
+Temps: 270C nozzle and 60c bed
+Printer: ender 3 running klipper with mods listed below 
+Extruder stepper moved to y axis and larger one installed in its place, Volcano heater block and 60w cartridge, dual 5015 fans part cooling and single 5015 stepper driver cooling, raspberry Pi and printed mods
+Slicer: prusa slicer
+Infill: 10% grid combined every other layer
+Layer height: 0.25mm
+Line width: 0.5mm
+Perimeter speed: 300mm/s
+Infill speed: 165mm/s
+Solid infill speed: 280mm/s
+Top solid infill speed: 260mm/s
+Accel: 40000mm/s/s
+Accel to decel: 40000mm/s/s
+Z accel: 2000mm/s/s
+Max velocity:300mm/s
+Scv: 85mm/s
+
+Print time: 6:41
+
+
+Similar to 4MAX Pro Printer
+
+Kickstarter Campaign Page : 
+https://www.kickstarter.com/projects/...
+
+This is our second attempt for SpeedBoatRace contest and we finally did it below 7 minutes! Its even looking better than old one (even chimney!). Maybe we can work on this a little more and share our faster attempt! Subscribe for more and dont forget to like! See you soon in Kickstarter Campaign!!!
+
+Settings for this attempt ;
+Slicer - SuperSlicer
+Speed - 320mm/s and 400mm/s for infill only
+Accel/Decel - 25 000mm/s^2
+Square Corner - 80 mm/s
+Travel - 500mm/s
+Hotend - E3d Volcano
+Layer Width/Height - 0.5 / 0.25
+Top / Bottom / Walls - 3/3/2
+Infill - %10
+Material - ABS
+Cooling - Dual 4010 Blower Fan
+Temperatures - 285C Hotend - 120C Bed
+Bed - PEI Sheet

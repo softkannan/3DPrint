@@ -1,0 +1,54 @@
+[gcode_macro PRIME_LINE]
+description: Print an easy to remove parametric extruder priming line with a built-in handle.
+gcode:
+   # settings
+   {% set line = {
+      'initial_purge'  : params.PURGE|default(8)|int,   # mm of filament to purge before printing. set to 0 to disable
+      'retract_after'  : params.RETRACT|default(1)|int, # mm of filament to recract after printing. set to 0 to disable
+      'length'         : params.LENGTH|default(150)|int,
+      'print_speed'    : params.PRINT_SPEED|default(30)|int,
+      'travel_speed'   : params.TRAVEL_SPEED|default(200)|int,
+      'overlap_percent': 80 # how much prime lines overlap each other,
+      'x_offset'       : params.X_OFFSET|default(0)|float,
+      'y_offset'       : params.Y_OFFSET|default(0)|float
+   } %}
+   {% set handle = {
+      'do_print'   : params.PRINT_HANDLE|default(1)|int,  # set to 0 to disable printing the handle
+      'width'      : 5.0,
+      'height'     : 5.0,
+      'fan_percent': 35 # without fan the handle is too melty to print
+   } %}
+
+   # sanity check and computed variables
+   {% set _ = line.update({'width': printer.configfile.config['extruder'].nozzle_diameter|float * 1.25, 'height': printer.configfile.config['extruder'].nozzle_diameter|float / 2}) %}
+   {% set _ = line.update({'e_per_mm': line.width * line.height, 'length': [line.length, printer.toolhead.axis_maximum.x]|min})  %}
+
+   SAVE_GCODE_STATE NAME=STATE_PRIME_LINE
+
+   M117 Prime Line
+   G90 # absolute positioning
+   G0 X{x_offset} Y{(handle.width / 2)|int + 1 + y_offset} Z{line.height} F{line.travel_speed * 60} # move to starting position
+   G91 # relative positioning
+   G1 E{line.initial_purge} F{5 * 60} # extrude at ~12mm3/sec
+   M117 Purge {line.initial_purge * line.e_per_mm}
+   G0 F{line.print_speed * 60} # set print speed
+   G1 X{line.length + x_offset} E{line.length * line.e_per_mm} # print forward line
+   G0 Y{(line.width * line.overlap_percent / 100) + y_offset} # overlap forward line
+   G1 X{-(line.length / 2) + x_offset} E{(line.length / 2) * (line.overlap_percent / 100) * line.e_per_mm}  # print backward line for half the length
+
+   # print a handle for easy removal
+   {% if handle.do_print != 0 and handle.width != 0 and handle.height != 0 %}
+      G0 X{handle.width + x_offset} Y{(handle.width / 2) + y_offset} # move into position for printing handle
+      {% set saved_fan_speed = (printer['fan'].speed * 256)|int %}
+      M106 S{((handle.fan_percent / 100) * 256)|int} # set part fan to desired speed
+      {% for _ in range((line.height * 1000)|int, (handle.height * 1000)|int, (line.height * 1000)|int) %} # loop however many cycles it takes to print required handle height
+         G1 Y{(loop.cycle(-1.0, 1.0) * handle.width) + y_offset} E{handle.width * line.e_per_mm / 2} # handle layer, half as thick
+         G0 X{-(line.width * 0.2) + x_offset} Z{line.height} # move up and shift the layer to make the handle sloping
+      {% endfor %}
+      M106 S{saved_fan_speed} # restore previous part fan speed
+   {% endif %}
+   
+   G1 E-{line.retract_after} F{50 * 60} # retract at 50mm/sec after printing
+   G0 Y{60 + y_offset} Z2 F{line.travel_speed * 60} # move away from handle
+
+   RESTORE_GCODE_STATE NAME=STATE_PRIME_LINE
