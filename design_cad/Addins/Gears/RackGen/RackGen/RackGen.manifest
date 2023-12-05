@@ -1,0 +1,15 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"author":	"Niklas Pöllönen",
+	"description":	{
+		"":	"Rack gear generator. Normal and helical."
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true,
+	"id":	"5264EDEF-AE22-4EED-BC0C-AADACF1DD5F3",
+	"version":	"1.2.0",
+	"runOnStartup":	true,
+	"sourcewindows":	"RackGen.vcxproj",
+	"sourcemac":	"RackGen.xcodeproj"
+}

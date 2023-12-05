@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"Krish K",
+	"description":	{
+		"":	"Import User Parameters from CSV"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

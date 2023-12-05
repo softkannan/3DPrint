@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0108)https://apps.autodesk.com/FUSION/en/Detail/HelpDoc?appId=789800822168335025&appLang=en&os=Win64&mode=preview -->
+<html lang="en" class=" js canvas canvastext no-touch hashchange history draganddrop rgba multiplebgs borderimage boxshadow textshadow cssgradients csstransitions sessionstorage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Autodesk App Store - Install scripts or add-ins from GitHub help file</title><link rel="stylesheet" href="./Resources/appstore-combined.min.css"></head>
+<body>
+<div id="main" class="detail-page helpdoc-page clearfix" style="min-height: 531px;">
+    <div id="content">
+        <div id="helpdoc-head">
+            <img id="helpdoc-head-icon" src="./Resources/resized_fdf126fe-0c5d-496b-b8d9-5f344f9d102c_.png" alt="Install scripts or add-ins from GitHub">
+            <div id="helpdoc-head-description">
+                <h1 id="helpdoc-product-title">Install scripts or add-ins from GitHub</h1>
+                
+                <div class="clear"></div>
+                <hr>
+                <div class="seller">Jerome Briot</div>
+                <div class="description">A fast and easy way to install scripts or add-ins directly from GitHub repositories.</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div><br>
+        <div id="helpdoc-tag"><a href="#description" class="helpdoc-breadcrumb">Description</a>
+                 
+                <a href="#generalinfo" class="helpdoc-breadcrumb">General Usage Instructions</a>
+                <a href="#screensinfo" class="helpdoc-breadcrumb">Screenshots</a>
+                <a href="#inunininfo" class="helpdoc-breadcrumb">Installation/Uninstallation</a>
+                <a href="#knownissueinfo" class="helpdoc-breadcrumb">Known Issues</a>
+                <a href="#contactinfo" class="helpdoc-breadcrumb">Contact</a>
+                <a href="#versionhistoryinfo" class="">Version History</a>
+            <div class="clear"></div>
+        </div><div class="helpdoc-element description">
+            <div class="clear"></div>
+            <h1 id="description">Description</h1>
+            <div class="helpdoc-text"> 
+
+<p><strong>End users<br></strong></p>
+
+
+<p>This app allows you to automatically install scripts or add-ins from GitHub in Autodesk® Fusion 360™. No need to manually download and unzip files. No need to worry about target directory location.</p>
+
+<p>Follow these steps:</p>
+<ol>
+  <li>launch the app</li>
+  <li>enter the URL of the GitHub repo</li>
+  <li>click OK</li>
+  <li>and it's done</li></ol></p>
+
+<p>The script or the addin is now installed in Autodesk Fusion 360.</p>
+
+<p><strong>Developers</strong></p>
+
+<p>The code of your script or add-in must be in the root directory of its GitHub repo. A manifest file is also mandatory at the same location.</p>
+
+<p>No need to worry if the repo name doesn't match the add-in name. The final name is extracted from the name of the manifest file.</p></div></div>
+        
+        
+        <div class="helpdoc-element ">
+            <div class="clear"></div>
+            <h1 id="generalinfo">General Usage Instructions</h1>
+            <div class="helpdoc-text"><p>Follow these steps in Fusion 360:</p>
+<ol>
+<li>open the Scripts and Add-Ins dialog</li>
+<li>select GitHubToFusion360</li>
+<li>click on "Run"</li>
+<li>copy/paste the URL of the GitHub repo to install</li>
+<li>check information displayed on the dialog</li>
+<li>click OK</li>
+</ol><br>
+
+<p>Note that you must enter the complete URL of the GitHub repo, so it must start with <a href="https://github.com/" target="_blank">https://github.com/</a></p>
+<p>The script or the add-in is now installed. You need to manually run it from the Scripts and Add-Ins dialog:</p>
+<ol>
+<li>re-open the Scripts and Add-Ins dialog</li>
+<li>select the script or add-in that you installed</li>
+<li>click on "Run"</li>
+</ol><br>
+
+<p>The script or add-in is ready to be used.</p>
+<p>Refer <a href="https://screencast.autodesk.com/Embed/479487e2-1c67-4ae2-b52f-3b789c8367c8" target="_blank">Video</a></p></div>
+        </div>
+
+        
+        <div id="helpdoc-element-screenshot" class="helpdoc-element ">
+            <div class="clear"></div>
+            <h1 id="screensinfo">Screenshots</h1>
+            <div>
+                        <div class="helpdoc-screenshot">
+                            <a href="https://screencast.autodesk.com/Embed/Timeline/479487e2-1c67-4ae2-b52f-3b789c8367c8" target="_blank" title="" data-mime="Video"><div id="video-overlay"></div>
+                                <div class="helpdoc-img-container">
+                                    <span class="helper"></span>
+                                    <img class="helpdoc-screenshot-img" src="./Resources/1">
+                                    <span class="helper"></span>
+                                </div>
+                            </a>
+                            
+                        </div>
+        <div class="helpdoc-command helpdoc-element helpdoc-element-hidden">
+            <div class="clear"></div>
+            <h1 id="commandinfo">Commands</h1>
+            <div>
+            </div>
+        </div>
+
+        
+        <div class="helpdoc-element ">
+            <div class="clear"></div>
+            <h1 id="inunininfo">Installation/Uninstallation</h1>
+            <div class="helpdoc-text">Install:<br>
+
+The installer that ran when you downloaded this app/plug-in from Autodesk App Store will start installing the app/plug-in. OR, simply double-click the downloaded installer to install the app/plugin.<br><br>
+
+ 
+
+Uninstall for Windows:<br>
+
+You can unload the add-in without uninstalling it by clicking the "Stop" button when the add-in is selected in the list box on the "Add-Ins" tab of the "Scripts and Add-Ins" dialog.<br>
+
+Unchecking "Run on Startup" causes the add-in not to be loaded in future sessions of Fusion 360.<br>
+
+To uninstall this plug-in, exit the Autodesk product if you are currently running it, simply rerun the installer, and select the "Uninstall" button.<br>
+
+OR, you can uninstall it from 'Control Panel/Programs and Features' (Windows 7/8.1/10), just as you would uninstall any other application from your system.<br><br>
+
+Uninstall for MAC:<br>
+
+You can unload the add-in without uninstalling it by clicking the "Stop" button when the add-in is selected in the list box on the "Add-Ins" tab of the "Scripts and Add-Ins" dialog.<br>
+
+Unchecking "Run on Startup" causes the add-in not to be loaded in future sessions of Fusion 360.<br>
+
+- Navigate to ./ApplicationsPlugins folder and select the app bundle you want to uninstall<br>
+
+- Either drag the app bundle to the Trash, or right-click and select “Move to Trash”<br>
+
+- Right-click on the Trash-Can and select “Empty Trash”<br>
+
+- If you prefer keystrokes, you can also just select the app bundle and then hit Command+Delete to move the app to Trash, then empty the Trash and the app will be removed.
+
+</div>
+        </div>
+
+        
+        <div class="helpdoc-element helpdoc-element-hidden">
+            <div class="clear"></div>
+            <h1 id="addinfo">Additional Information</h1>
+            <div class="helpdoc-text"></div>
+        </div>
+
+        
+        <div class="helpdoc-element helpdoc-element-hidden ">
+            <div class="clear"></div>
+            <h1 id="knownissueinfo">Known Issues</h1>
+            <div class="helpdoc-text"></div>
+        </div>
+
+        
+        <div class="helpdoc-element ">
+            <div class="clear"></div>
+            <h1 id="contactinfo">Contact</h1>
+            <div>
+                
+                <div>
+                    <div class="">Company Name: Jerome Briot</div>
+                    <div class="">Company URL: <a href="http://www.jeromebriot.com/" target="_blank">http://www.jeromebriot.com/</a></div>
+                    <div class="">Support Contact: <a href="mailto:jbtechlab@gmail.com">jbtechlab@gmail.com</a></div>
+                </div>
+                
+                <div class="helpdoc-element ">
+                    <div class="clear"></div>
+                    <h1 id="authorinfo">Author/Company Information</h1>
+                    <div class="helpdoc-text">Jerome Briot</div>
+                </div>
+                
+                <div class="helpdoc-element ">
+                    <div class="clear"></div>
+                    <h1 id="supportinfo">Support Information</h1>
+                    <div class="helpdoc-text"><p>Email me at&nbsp;<a href="mailto:jbtechlab@gmail.com">jbtechlab@gmail.com</a>&nbsp;with feedback or questions</p>
+<p>Write an explicit subject to your email (i.e. "GitHubToFusion360" + your problem)</p></div>
+                </div>
+            </div>
+        </div>
+
+        
+
+            <div class="helpdoc-version helpdoc-element">
+                <div class="clear"></div>
+                <h1 id="versionhistoryinfo">Version History</h1>
+                <div>
+                    <table class="helpdoc-table" id="helpdoc-table-version">
+                        <colgroup>
+                            <col style="width:150px">
+                            <col style="width:680px">
+                        </colgroup>
+                        <tbody><tr>
+                            <th>Version Number</th>
+                            <th>Version Description</th>
+                        </tr><tr>
+                                <td>
+                                    <p>
+                                        2.4.0
+                                    </p>
+                                </td>
+                                <td style="white-space: pre-wrap;">Add support to "main" branch of GitHub repos (master => main in repo created after October 2020)
+Refactor some code
+Fix some typos</td>
+                            </tr>
+							<tr>
+                                <td>
+                                    <p>
+                                        2.3.0
+                                    </p>
+                                </td>
+                                <td style="white-space: pre-wrap;">Add ability to import sources located in a subfolder of the GitHub repo
+Change prefix of temporary folder name from "F360_GitHub_" to "GitHubToFusion360_"</td>
+                            </tr>
+							 <tr>
+                                <td>
+                                    <p>
+                                        2.2.0
+                                    </p>
+                                </td>
+                                <td style="white-space: pre-wrap;">Fix a bug in parsing non valid file NMachineSpecificOptions.xml</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        2.1.0
+                                    </p>
+                                </td>
+                                <td style="white-space: pre-wrap;">Ignore Fusion360AddinSkeleton.manifest file if present (see <a href="https://github.com/tapnair/Fusion360AddinSkeleton" target="_blank">https://github.com/tapnair/Fusion360AddinSkeleton</a>)
+Add history file</td>
+                            </tr>
+						
+						</tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        2.0.0
+                                    </p>
+                                </td>
+                                <td style="white-space: pre-wrap;">Add Mac support
+Add version number in title of the message boxes
+Fix some typos
+Improve app icon</td>
+                            </tr>
+						
+						</tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        1.1.0
+                                    </p>
+                                </td>
+                                <td style="white-space: pre-wrap;">Fixed a bug related to urllib.request</td>
+                            </tr>
+												
+						</tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        1.0.0
+                                    </p>
+                                </td>
+                                <td style="white-space: pre-wrap;">Initial release</td>
+                            </tr>
+                    </tbody></table>
+                </div>
+            </div>
+
+
+    </div>
+</div>
+</body></html>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0" ProductType="Application" AutodeskProduct="Fusion360" Name="Install scripts or addins from GitHub" Description="Install script or addin from GitHub automatically" AppVersion="2.5.0" Author="JBTechLab" AppNameSpace="com.autodesk.exchange.Fusion360.Install scripts or addins from GitHub" HelpFile="./Contents/docs/InstallscriptsoraddinsfromGitHub.html" OnlineDocumentation="http://www.jeromebriot.com/" ProductCode=" " UpgradeCode="{37AFC52D-08EA-4B5A-B10B-0864D9F595DE}" FriendlyVersion="2.5.0" SupportedLocales="Enu">
+  <CompanyDetails Name="Jerome Briot" Phone=" " Url="http://www.jeromebriot.com/" Email="jbtechlab@gmail.com" />
+  <RuntimeRequirements SupportPath="./Contents/docs" OS="win64|macOS" Platform="Fusion360" SeriesMin="" SeriesMax="" />
+  <Components>
+    <RuntimeRequirements SupportPath="./Contents/docs" OS="win64|macOS" Platform="Fusion360" SeriesMin="" SeriesMax="" />
+    <ComponentEntry AppName="Install scripts or addins from GitHub" Version="2.5.0" ModuleName="./Contents/GitHubToFusion360.manifest" AppDescription="Install script or addin from GitHub automatically" />
+  </Components>
+</ApplicationPackage>

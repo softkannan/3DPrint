@@ -1,0 +1,32 @@
+Version 2.5.0 - May 2022
+	Fix issue with master/main branches for some repos
+
+Version 2.4.0 - March 2021
+	Add support to "main" branch of GitHub repos (master => main in repo created after October 2020)
+	Fix a bug if repo is empty
+	Refactor some code
+	Fix some typos
+
+Version 2.3.0 - June 2020
+	Add ability to import sources located in a subfolder of the GitHub repo
+	Change prefix of temporary folder name from "F360_GitHub_" to "GitHubToFusion360_"
+
+Version 2.2.0 - February 2020
+	Fix a bug in parsing non valid file NMachineSpecificOptions.xml
+	Remove urllib workaround for Mac
+
+Version 2.1.0 - July 2018
+	Ignore Fusion360AddinSkeleton.manifest file if present (see https://github.com/tapnair/Fusion360AddinSkeleton)
+	Add history file
+
+Version 2.0.0 - April 2018
+	Add Mac support
+	Add version number in title of the message boxes
+	Fix some typos
+	Improve app icon
+
+Version 1.1.0 - April 2018
+	Fix a bug related to urllib
+
+Version 1.0.0 - January 2018
+	First release

@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"94968185-7E03-4FCF-B3B0-495EE334C3F4",
+	"author":	"Fabian Schurig",
+	"description":	{
+		"":	""
+	},
+	"version":	"1.2.4.5",
+	"runOnStartup":	true,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

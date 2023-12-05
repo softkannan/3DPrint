@@ -1,0 +1,10 @@
+Name,Value,Units,Comments
+M25_Tolerance,0.2,mm,Extend inner diameter
+M25_ScrewDiameter,3 + M25_Tolerance,mm,
+M25_ScrewDiameter_Tight,2.5 + M25_Tolerance,mm,
+M25_Nut_Diameter_Inner,5.5 + M25_Tolerance,mm,
+M25_Nut_Diameter_Outer,6.1 + M25_Tolerance,mm,
+M25_Nut_Heigth,2.5,mm,
+M25_Head_Diameter_Inner,5.6 + M25_Tolerance,mm,
+M25_Head_Diameter_Outer,6 + M25_Tolerance,mm,
+M25_Head_Heigth,1.9,mm,

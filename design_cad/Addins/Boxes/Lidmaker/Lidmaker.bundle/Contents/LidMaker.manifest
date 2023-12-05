@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"3bd56944-43c7-4e4f-b565-7e1410575527",
+	"author":	"Eirinn Mackay",
+	"description":	{
+		"":	"Creates a friction-fit lid in a hole on an open face, eg for boxes."
+	},
+	"version":	"1",
+	"runOnStartup":	true,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0" ProductType="Application" AutodeskProduct="Fusion360" Name="LidMaker" Description="Creates a lid/cap to fit in a hole on an planar face, useful for making box lids." AppVersion="1.0.0" Author="Sainsbury Wellcome Centre" AppNameSpace="com.autodesk.exchange.Fusion360.IDF import" HelpFile="./Contents/help/help.html" OnlineDocumentation="https://apps.autodesk.com/en/Publisher/PublisherHomepage?ID=5RQAJ2J98MHR" ProductCode="*" UpgradeCode="{CE519DD4-9687-4E6E-9C88-887AABDE7637}" FriendlyVersion="1.0.0" SupportedLocales="Enu">
+  <CompanyDetails Name="Sainsbury Wellcome Centre" Phone=" " Url="https://apps.autodesk.com/en/Publisher/PublisherHomepage?ID=5RQAJ2J98MHR" Email="jbtechlab@gmail.com" />
+  <RuntimeRequirements SupportPath="./Contents/" OS="Win64" Platform="Fusion360" SeriesMin="1" SeriesMax="2" />
+  <Components>
+    <RuntimeRequirements SupportPath="./Contents/" OS="win64" Platform="Fusion360" SeriesMin="1" SeriesMax="2" />
+    <ComponentEntry AppName="LidMaker" Version="1.0.0" ModuleName="./Contents/LidMaker.manifest" AppDescription="LidMaker" />
+  </Components>
+</ApplicationPackage>

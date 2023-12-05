@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"Jay Deaton",
+	"description":	{
+		"":	"Select all faces of a body"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

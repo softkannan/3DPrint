@@ -1,0 +1,14 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"author":	"Scott Ferguson",
+	"description":	{
+		"":	"Create spur, internal and rack gears."
+	},
+	"supportedOS":	"windows",
+	"editEnabled":	false,
+	"id":	"436EDF2E-32F3-4872-9906-CB91B06135C1",
+	"version":	"1.1.0",
+	"runOnStartup":	true,
+	"sourcewindows":	"FMGears.vcxproj"
+}

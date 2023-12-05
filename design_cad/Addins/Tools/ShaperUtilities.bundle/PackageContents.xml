@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0"
+	ProductType="Application"
+
+	AutodeskProduct="Fusion360"
+	Name="Shaper Utilities"
+	Description="Export to Origin"
+	AppVersion="1.6.10"
+	Author="Shapertools"
+	AppNameSpace="com.autodesk.exchange.Fusion360.Shaper Utilities"
+	HelpFile="./Contents/docs/ShaperUtilities.html"
+	OnlineDocumentation="https://www.shapertools.com"
+
+	ProductCode="*"
+	UpgradeCode="{60CC6A25-B147-45E1-9E14-BBDA49004A8C}" >
+	
+	<CompanyDetails Name="Shaper Tools"
+		Phone=" "
+		Url="https://www.shapertools.com"
+		Email="sam@shapertools.com" />
+
+		<RuntimeRequirements SupportPath="./Contents/docs" OS="win64" Platform="Fusion360" SeriesMin=""  />
+
+	<Components>
+		<RuntimeRequirements SupportPath="./Contents/docs" OS="win64" Platform="Fusion360" SeriesMin="" />
+		    <ComponentEntry AppName="Shaper Utilities" Version="1.6.10" ModuleName="./Contents/ShaperUtilities.manifest" AppDescription="Export to Origin" />
+	</Components>
+	
+</ApplicationPackage>

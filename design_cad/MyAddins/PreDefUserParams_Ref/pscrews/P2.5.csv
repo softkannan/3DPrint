@@ -1,0 +1,14 @@
+Name,Value,Units,Comments
+P25_Tolerance,0.2,mm,Extend inner diameter
+P230_ScrewDiameter,2.3 + P25_Tolerance,mm,
+P230_Head_Diameter_Outer,3.6 + P25_Tolerance,mm,
+P230_Head_Heigth,1.9,mm,
+P230_Screw_Heigth,8,mm,
+P255_ScrewDiameter,2.55 + P25_Tolerance,mm,
+P255_Head_Diameter_Outer,5.1 + P25_Tolerance,mm,
+P255_Head_Heigth,1.9,mm,
+P255_Screw_Heigth,8,mm,
+P290_ScrewDiameter,2.9 + P25_Tolerance,mm,
+P290_Head_Diameter_Outer,3.6 + P25_Tolerance,mm,
+P290_Head_Heigth,1.9,mm,
+P290_Screw_Heigth,8,mm,

@@ -1,0 +1,11 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"Jerome Briot",
+	"description":	{
+		"":	"Install scripts or add-ins from GitHub"
+	},
+	"version": "2.5.0",
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

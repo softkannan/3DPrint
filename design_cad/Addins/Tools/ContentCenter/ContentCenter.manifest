@@ -1,0 +1,13 @@
+{
+	"autodeskProduct": "Fusion360",
+	"type": "addin",
+	"id": "94968185-7E03-4FCF-B3B0-495EE334C3F4",
+	"author": "Fabian Schurig",
+	"description": {
+		"":	"Choose from different customizable content and insert your selection into your Fusion design"
+	},
+	"version": "1.2.4.5",
+	"runOnStartup": true,
+	"supportedOS": "windows",
+	"autodeskLibraries": ["application", "dashboard", "geometry", "materials", "userInterface", "utilities", "bRep", "components", "construction", "features", "fusion", "meshBody", "meshData", "sketch", "tSpline"]
+}
