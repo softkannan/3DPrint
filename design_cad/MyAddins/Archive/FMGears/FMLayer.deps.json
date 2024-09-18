@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "FMLayer/3.3.0": {
+        "dependencies": {
+          "FMCore": "0.9.0",
+          "FMGeometry": "0.9.0"
+        },
+        "runtime": {
+          "FMLayer.dll": {}
+        }
+      },
+      "FMCore/0.9.0": {
+        "runtime": {
+          "FMCore.dll": {}
+        }
+      },
+      "FMGeometry/0.9.0": {
+        "dependencies": {
+          "FMCore": "0.9.0"
+        },
+        "runtime": {
+          "FMGeometry.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FMLayer/3.3.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FMCore/0.9.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FMGeometry/0.9.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

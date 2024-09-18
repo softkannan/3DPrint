@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+
+<!--<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />-->
+
+<head>
+  <title>Ellis' Pressure Advance / Linear Advance Calibration Tool</title>
+  <meta charset="UTF-8">
+  <meta content="Ellis' Pressure Advance / Linear Advance Calibration Tool">
+  <link rel="stylesheet" href="./stylesheets/main.css?v8" />
+  <link rel="stylesheet" href="./stylesheets/font-awesome.min.css?v2" />
+</head>
+
+<body>
+  <script language="JavaScript" type="text/javascript" src="./javascript/jquery-2.2.1.min.js?v1"></script>
+  <script language="JavaScript" type="text/javascript" src="./javascript/jquery-ui.min.js?v1"></script>
+  <script language="JavaScript" type="text/javascript" src="./javascript/FileSaver.min.js?v1"></script>
+  <script language="JavaScript" type="text/javascript" src="./javascript/pressure_linear_advance.js?v28"></script>
+  <script src="./javascript/gcode-viewer.js?v1"></script>
+  <div class="container" role="main">
+    <div class="row">
+      <div class="pageTitle" id="pageTitle">
+        <h1>Ellis' Pressure Advance / Linear Advance Calibration Tool</h1>
+        <sup>Original <a href="https://marlinfw.org/tools/lin_advance/k-factor.html">Marlin calibration tool</a> by <a
+            href="https://github.com/Sineos/k-factorjs">Sineos.</a>
+          Heavily modified/rewritten by <a href="https://github.com/AndrewEllis93">Andrew Ellis.</a></sup><br>
+        <sup>The old "lines" version of this tool has been <strong>deprecated.</strong> It's still available <a
+            href="https://ellis3dp.com/Pressure_Linear_Advance_Tool/lines_method_deprecated/">here</a>
+          if you prefer it.</i></sup><br><br>
+        For issues/bugs, contributions, and feature requests, please <a
+          href="https://github.com/AndrewEllis93/Pressure_Linear_Advance_Tool/issues">open a GitHub
+          issue.</a><br><br>
+
+      </div>
+      <table id=gcodeTable>
+        <tbody>
+          <thead>
+            <tr>
+              <td colspan=2 class=tdHead style="text-align: center;">
+                <h3>G-code</h3>
+              </td>
+            </tr>
+            <tr>
+              <td class=gcodeTableLeftHeading>
+                <h4>3D Preview</h4> &nbsp;&nbsp;<a href="https://github.com/aligator/gcode-viewer">Source</a><br>
+                <i>Line widths are approximations only.</i><br><br><br><br>
+                <strong>See my</strong><br>
+                <h5><u><a href="https://ellis3dp.com/Print-Tuning-Guide/">Print Tuning Guide</a></u></h5>
+                and
+                <h5><u><a
+                      href="https://ellis3dp.com/Print-Tuning-Guide/articles/pressure_linear_advance/introduction.html">Pressure
+                      / Linear Advance article</a></u></h5>
+                <strong>for demonstrations and examples!</strong>
+              <td class="tdSection" id="gcode-viewer" colspan="2">
+            </tr>
+            <tr>
+              <td class=tdSection></td>
+              <td id=information class=tdSection colspan=2>
+              </td>
+            </tr>
+            <tr class="tdHead">
+              <td colspan=2><label for="FILENAME" style="text-align: left;">File Name:</label></strong>
+                <input type=text id="FILENAME" data-settings />.gcode&nbsp;
+                <input type=button id="downloadButton" onclick="validate(true); saveTextAsFile();"
+                  value="Download G-code" />
+                <font color=red>&nbsp;&nbsp;(Go through ALL the settings first!)</font>
+                <!-- <input type=button id="toggleGcode" onclick="$('#gcodetextarea').parent().toggle();" value="Toggle Gcode Text Preview" /> -->
+                <p id=warning1 style="display: none;">warning</p>
+                <p id=warning2 style="display: none;">warning</p>
+                <p id=warning3 style="display: none;">warning</p>
+                <p id=warning4 style="display: none;">warning</p>
+              </td>
+            </tr>
+            <tr style="display:none;">
+              <td colspan=2 class="txtareatd"><textarea id="gcodetextarea" readonly></textarea></td>
+            </tr>
+          </thead>
+        </tbody>
+      </table>
+      <br><br>
+      <table>
+        <tbody>
+          <thead>
+            <td colspan=4 class=tdHead>
+              <h3>Settings</h3>
+              <h5 style="color:rgb(172, 74, 160);">Advanced Mode <input type=checkbox id="EXPERT_MODE" data-settings
+                  data-render />
+              </h5>
+              <br>
+              <input type=button id="saveSettingsButton" onclick=setLocalStorage() value="Save Settings to Browser"
+                title="Save settings in a cookie." />
+              &nbsp;&nbsp;&nbsp;<input type=button onclick="window.localStorage.clear('PA_SETTINGS');location.reload();"
+                value="Restore Defaults" title="Remove settings cookie and reload page." />
+            </td>
+            </tr>
+            <thead>
+              <tr>
+                <td colspan=4 class=tdSection>
+                  <h4>Printer</h4>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="FIRMWARE">Firmware</td>
+                <td class=inputCell>
+                  <select id="FIRMWARE" data-settings data-render>
+                    <option value="klipper">Klipper</option>
+                    <option value="marlin1_1_9">Marlin 1.1.9+</option>
+                    <option value="marlin1_1_8">Marlin 1.1.8 & Older</option>
+                    <option value="rrf3">RepRapFirmware 3+</option>
+                  </select>
+                  <p id="KFACTOR_DESRIPTION"></p>
+                </td>
+                <td><label for=BED_SHAPE>Bed Shape</label></td>
+                <td class=inputCell><select id="BED_SHAPE" data-settings>
+                    <option value="Rect">Rectangular</option>
+                    <option value="Round">Round</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for=NOZZLE_DIAMETER>Nozzle Diameter</label></td>
+                <td class=inputCell>
+                  <input type=number id="NOZZLE_DIAMETER" step=0.05 data-settings data-render />
+                  mm
+                </td>
+                <td><label for=BED_X>Bed Size X</label></td>
+                <td class=inputCell>
+                  <input type=number id="BED_X" step=1 data-settings /> mm
+                </td>
+              </tr>
+              <tr>
+                <td><label for=FILAMENT_DIAMETER>Filament Diameter</label></td>
+                <td class=inputCell colspan="1">
+                  <input type=number id="FILAMENT_DIAMETER" step=0.005 min=1 data-settings /> mm
+                </td>
+                <td><label for=BED_Y>Bed Size Y</label></td>
+                <td id="bedSizeYInputCell" class=inputCell>
+                  <input type=number id="BED_Y" step=1 data-settings /> mm
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for=EXT_MULT>Extrusion Multiplier</label>
+                </td>
+                <td class=inputCell colspan="1">
+                  <input type=number id="EXT_MULT" step=0.0005 data-settings /> x
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      A rough guess is fine if you haven't tuned this yet.<br><br>
+                      Overextruding the test is a bit better than underextruding it.<br><br>
+                      This tool uses Prusa Slicer / SuperSlicer / OrcaSlicer flow math. Values from Cura may differ slightly.
+                    </span>
+                  </div>
+                </td>
+                <td><label for=SPEED_TRAVEL>Travel Speed</label></td>
+                <td class=inputCell>
+                  <input type=number id="SPEED_TRAVEL" step=1 data-settings /> mm/s
+                </td>
+              </tr>
+              <tr class="expert">
+                <td><label for=EXTRUDER_NAME class="expertLabel">Extruder Name</label> <input type=checkbox
+                    id="EXTRUDER_NAME_ENABLE" data-settings /></td>
+                <td class=inputCell>
+                  <input type=text id="EXTRUDER_NAME" data-settings />
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      CASE SENSITIVE.<br><br>
+                      For printers with multiple toolheads.<br><br>
+                      Enter the config section name of the desired extruder (e.g. "extruder2").<br><br>
+                      Emits <tt>ACTIVATE_EXTRUDER EXTRUDER=[EXTRUDER_NAME]</tt> to g-code.<br><br>
+                      Also appends <tt>EXTRUDER_NAME=[EXTRUDER_NAME]</tt> to pressure advance g-codes.
+                    </span>
+                  </div>
+                </td>
+                <td><label for=TOOL_INDEX class="expertLabel">Tool Index</label></th>
+                <td class=inputCell>
+                  <input type=number id="TOOL_INDEX" step=1 data-settings />
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Usually 0 if only one extruder. Allows choosing extruder if more than one.<br><br>
+                      Emits <tt>T[TOOL_INDEX]</tt> if not set to 0.
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <label for=ORIGIN_CENTER class="expertLabel">Origin Bed Center</label>
+                </td>
+                <td class=inputCell>
+                  <input type=checkbox id="ORIGIN_CENTER" data-settings />
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Uncommon on rectangular beds.<br><br>
+                      Sets X0, Y0 to the center instead of the
+                      corner.
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </thead>
+            <thead>
+              <tr>
+                <td colspan=4 class=tdSection>
+                  <h4>Retraction / Z Hop</h4>
+                </td>
+              </tr>
+              <tr>
+                <td><label for=RETRACT_DIST>Retract Distance</label></td>
+                <td class=inputCell>
+                  <input type=number id="RETRACT_DIST" step=0.05 data-settings /> mm
+                </td>
+                <td><label for=ZHOP_ENABLE>Z Hop</label></td>
+                <td class=inputCell>
+                  <input type=checkbox id="ZHOP_ENABLE" checked data-settings />
+                </td>
+              </tr>
+              <tr>
+                <td><label for=SPEED_RETRACT>Retract Speed</label></td>
+                <td class=inputCell>
+                  <input type=number id="SPEED_RETRACT" step=1 data-settings /> mm/s
+                </td>
+                <td><label for=ZHOP_HEIGHT>Z Hop Height</label></td>
+                <td id="zhopHeightInputCell" class=inputCell>
+                  <input type=number id="ZHOP_HEIGHT" step=0.05 data-settings /> mm
+                </td>
+              </tr>
+              <tr>
+                <td><label for=SPEED_UNRETRACT>Unretract Speed</label></td>
+                <td class=inputCell colspan="1">
+                  <input type=number id="SPEED_UNRETRACT" step=1 data-settings /> mm/s
+                </td>
+                <td class="expert"><label for=FW_RETRACT class="expertLabel">Use Firmware Retraction</label></td>
+                <td class="inputCell expert" colspan="1">
+                  <input type=checkbox id="FW_RETRACT" data-settings />
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Must be set up in your printer's firmware.<br><br>
+                      Uses <tt>G10</tt> / <tt>G11</tt> for retracts instead of directly commanding E moves.
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+              </tr>
+            </thead>
+            <thead>
+              <tr>
+                <td colspan=4 class=tdSection>
+                  <h4>First Layer Settings</h4>
+                </td>
+              </tr>
+              <tr>
+                <td><label for=HEIGHT_FIRSTLAYER>First Layer Height</label></td>
+                <td class=inputCell>
+                  <input type=number id="HEIGHT_FIRSTLAYER" step=0.001 data-settings data-render /> mm
+                </td>
+                <td class=inputCell><label for=ANCHOR_OPTION style="font-size: 14px; vertical-align: middle;">Anchor
+                    Option</label><br>&nbsp;&nbsp;&nbsp;&nbsp;<select size="3" id="ANCHOR_OPTION" data-settings
+                    data-render>
+                    <option value="anchor_frame" selected="selected">Anchor Frame</option>
+                    <option value="anchor_layer">Anchor Layer</option>
+                    <option value="no_anchor">No Anchor</option>
+                  </select></td>
+                <td id="anchorOptionDescription" style="height: 160px;"></td>
+              </tr>
+
+              <tr>
+                <td><label for=SPEED_FIRSTLAYER>First Layer Print Speed</label></td>
+                <td class=inputCell>
+                  <input type=number id="SPEED_FIRSTLAYER" step=1 data-settings /> mm/s
+                </td>
+                <td class="expert"><label for=ANCHOR_LAYER_LINE_RATIO class="expertLabel">Anchor Line Width</label>
+                </td>
+                <td id="anchorLayerLineRatioInputCell" class="inputCell expert">
+                  <input type=number id="ANCHOR_LAYER_LINE_RATIO" step=0.5 data-settings data-render /> %
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Percentage is based on nozzle diameter.
+                    </span>
+                  </div>
+              </tr>
+              <tr>
+                <td><label for=FAN_SPEED_FIRSTLAYER>First Layer Fan Speed</label></td>
+                <td class=inputCell>
+                  <input type=number id="FAN_SPEED_FIRSTLAYER" step=1 data-settings /> %
+                </td>
+                <td class="expert"><label for=ANCHOR_PERIMETERS class="expertLabel">Anchor Frame Perimeters</label></td>
+                <td id="anchorPerimetersInputCell" class="inputCell expert">
+                  <input type=number id="ANCHOR_PERIMETERS" step=1 data-settings data-render />
+                </td>
+              </tr>
+              <tr>
+              </tr>
+            </thead>
+            <thead>
+              <tr>
+                <td colspan=4 class=tdSection>
+                  <h4>Print Settings</h4>
+                </td>
+              </tr>
+              <tr class="expert">
+                <td><label for=LINE_RATIO class="expertLabel">Line Width</label></td>
+                <td class="inputCell">
+                  <input type=number id="LINE_RATIO" step=0.5 data-settings data-render /> %
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Percentage is based on nozzle diameter.<br><br>
+                      Match your thickest perimeter from your slicer settings (internal/external).
+                    </span>
+                  </div>
+                </td>
+                <td><label for=NUM_LAYERS class="expertLabel">Layer Count</label></td>
+                <td class="inputCell">
+                  <input type=number id="NUM_LAYERS" step=1 data-settings data-render />
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Includes first layer.
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for=SPEED_PERIMETER>Print Speed</label>
+                </td>
+                <td class=inputCell>
+                  <input type=number id="SPEED_PERIMETER" step=1 data-settings /> mm/s
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Use your external perimeter speed from your slicer settings - if it's reasonably fast
+                      (>60mm/s).<br><br>
+                      If the results are hard to read, try a faster speed.
+                    </span>
+                  </div>
+                </td>
+                <td><label for=HEIGHT_LAYE>Layer Height</label></td>
+                <td class="inputCell">
+                  <input type=number id="HEIGHT_LAYER" step=0.001 data-settings data-render />
+                  mm
+                </td>
+
+              </tr>
+              <tr>
+                <td>
+                  <label for=ACCELERATION>Acceleration</label> <input type=checkbox id="ACCELERATION_ENABLE"
+                    data-settings />
+                </td>
+                <td class=inputCell>
+                  <input type=number id="ACCELERATION" step=1 data-settings data-toggle-acceleration_enable />
+                  mm/s<sup>2</sup>
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Your <strong>MAX</strong> accel will be used if you don't set this.<br><br>
+                      <strong>Set this if you use acceleration control in your slicer!!</strong><br><br>
+                      (Use your external perimeter acceleration)
+                    </span>
+                  </div> <strong>(!!!)</strong>
+                </td>
+                <td><label for=FAN_SPEED>Fan Speed</label></td>
+                <td class=inputCell>
+                  <input type=number id="FAN_SPEED" step=1 data-settings /> %
+                </td>
+
+              </tr>
+            </thead>
+            <thead id="patternSettingsHead" class="expertLabel">
+              <tr>
+                <td colspan=4 class="tdSection expert">
+                  <h4>Pattern Settings &nbsp;</input><input type=checkbox id="PATTERN_OPTIONS_ENABLE" data-settings
+                      data-render /></h4>
+                  <i>(Unchecked will use defaults. Defaults are usually fine.)</i>
+                </td>
+              </tr>
+              <tr>
+                <td><label for=WALL_COUNT class="expertLabel">Wall Count</label></td>
+                <td class=inputCell>
+                  <input type=number id="WALL_COUNT" step=1 data-settings data-render />
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Wall/perimeter count for each test pattern. This will slightly impact print size.
+                    </span>
+                  </div>
+                </td>
+                <td><label for=CORNER_ANGLE class="expertLabel">Corner Angle</label></td>
+                <td class=inputCell colspan="1">
+                  <input type=number id="CORNER_ANGLE" step=1 data-settings data-render /> °
+                </td>
+              </tr>
+              <tr>
+                <td><label for=WALL_SIDE_LENGTH class="expertLabel">Side Length</label></td>
+                <td class=inputCell>
+                  <input type=number id="WALL_SIDE_LENGTH" step=1 data-settings data-render />
+                  mm
+                </td>
+                <td><label for=PRINT_DIR class="expertLabel">Printing Direction</label></td>
+                <td class=inputCell><select id="PRINT_DIR" data-settings data-render>
+                    <option value="0" selected="selected">0°</option>
+                    <option value="45">45°</option>
+                    <option value="90">90°</option>
+                    <option value="135">135°</option>
+                    <option value="180">180°</option>
+                    <option value="225">225°</option>
+                    <option value="270">270°</option>
+                    <option value="315">315°</option>
+                  </select>
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Rotates the print.
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><label for=PATTERN_SPACING class="expertLabel">Spacing</label></td>
+                <td class=inputCell colspan="3">
+                  <input type=number id="PATTERN_SPACING" step=0.1 data-settings data-render />
+                  mm
+                  <div class="hover-text">&#x1F6C8;
+                    <span class="tooltip-text">
+                      Horizontal spacing between the patterns.
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <thead>
+                <tr>
+                  <td colspan=4 class=tdSection>
+                    <h4 id="STEPPING_HEADER">Pressure Advance Stepping</h4>
+                    <p id='STEPPING_HEADER_BODY'></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for=PA_START>PA Start Value</label></td>
+                  <td class=inputCell id="start_factor" colspan=1>
+                    <input type=number id="PA_START" step=0.0005 data-settings data-render />
+                  </td>
+                  <td><label for=PA_END>PA End Value</label></td>
+                  <td class=inputCell id="end_factor" colspan="1">
+                    <input type=number id="PA_END" step=0.0005 data-settings data-render />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for=PA_STEP>PA Increment</label>
+                  </td>
+                  <td class=inputCell>
+                    <input type=number id="PA_STEP" step=0.0005 data-settings data-render />
+                    <div class="hover-text">&#x1F6C8;
+                      <span class="tooltip-text">
+                        Increment for each pattern.<br>
+                        Needs to cleanly divide into range (End - Start).
+                      </span>
+                    </div>
+                  </td>
+                  <td class="expert"><label for=PA_SMOOTH class="expertLabel">Increment Smooth Time Instead</label></td>
+                  <td class="inputCell expert">
+                    <input type=checkbox id="PA_SMOOTH" data-settings />
+                    <div class="hover-text">&#x1F6C8;
+                      <span class="tooltip-text">
+                        Klipper only.<br><br>
+                        Increment PA smooth time INSTEAD of PA value.<br><br>
+                        This should only be ran <strong>after</strong> tuning pressure advance.<br><br>
+                        Don't forget to activate your new PA value first.<br><br>
+                        Experimental.
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="expert">
+                  <td><label for=USE_LINENO class="expertLabel">Number Tab</label></td>
+                  <td class=inputCell><input type=checkbox id="USE_LINENO" checked=checked data-settings data-render />
+                    <div class="hover-text">&#x1F6C8;
+                      <span class="tooltip-text">
+                        Creates a tab with PA/LA values printed on it.
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <label for=LINENO_NO_LEADING_ZERO class="expertLabel">No Leading Zeroes</label>
+                  </td>
+                  <td class=inputCell>
+                    <input type=checkbox id="LINENO_NO_LEADING_ZERO" data-settings data-render />
+                    <div class="hover-text">&#x1F6C8;
+                      <span class="tooltip-text">
+                        Removes leading zeroes on the number tab.
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="expert">
+                  <td><label for=ECHO class="expertLabel">Show on LCD</label></td>
+                  <td class="inputCell" colspan="3">
+                    <input type=checkbox id="ECHO" checked=checked data-settings />
+                    <div class="hover-text">&#x1F6C8;
+                      <span class="tooltip-text">
+                        Echo current value to the LCD using <tt>M117</tt>.
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <td colspan=4 class=tdSection>
+                    <h4>Start / End G-code</h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for=BED_TEMP>Bed Temp</label></td>
+                  <td class=inputCell colspan="1">
+                    <input type=number id="BED_TEMP" step=1 data-settings /> °C
+                  </td>
+                  <td>
+                    <label for=START_GCODE_NO_HOMING>Don't Add G28</label>
+                  </td>
+                  <td>
+                    <input type=checkbox id="START_GCODE_NO_HOMING" data-settings />
+                    <div class="hover-text">&#x1F6C8;
+                      <span class="tooltip-text">
+                        Use this if you are using a start macro and don't want G28 added.
+                      </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for=HOTEND_TEMP>Hotend Temp</label></td>
+                  <td class=inputCell colspan="1">
+                    <input type=number id="HOTEND_TEMP" step=1 data-settings /> °C
+                  </td>
+                  <td>
+                    <label for=START_GCODE_NO_HEATING>Don't Add Heating G-Codes</label>
+                  </td>
+                  <td>
+                    <input type=checkbox id="START_GCODE_NO_HEATING" data-settings />
+                    <div class="hover-text">&#x1F6C8;
+                      <span class="tooltip-text">
+                        Use this if don't want M190 / M109 heating g-codes added
+                        automatically.<br><br>
+                        Useful if you are passing temps to a start macro instead.
+                      </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for=START_GCODE>Start G-code</label></td>
+                  <td colspan=3>
+                    <p>
+                    <h5>Instructions</h5>
+                    </p>
+                    <p>
+                    <ul>
+                      <li>With <strong>Cura / Prusa Slicer / SuperSlicer / OrcaSlicer</strong>, you should <i>generally</i> be able
+                        to
+                        copy your start g-code from your slicer directly.</li>
+                      <li>With <strong>other slicers</strong>, you should also just be able to copy/paste, UNLESS you
+                        use
+                        slicer variables in your start g-code.
+                        <ul>
+                          <li>If you do, you will have to change them to the tool's
+                            variables, listed under "Tool Variables" below.</li>
+                        </ul>
+                      <li>If you use slicer variables in your start g-code APART from bed / hotend temps,
+                        replace them with REAL VALUES instead.</li>
+                      <li><strong>Tool Variables</strong> <i>(Optional)</i></li>
+                      <ul>
+                        <li>These can be used in your start g-code and will be replaced with real values from the
+                          form automatically:</li>
+                        <ul>
+                          <li>
+                            <font color="blue"><strong><tt>[BED_TEMP]</tt></strong></font>,
+                            <font color="blue"><strong><tt>[HOTEND_TEMP]</tt></strong></font>,
+                            <font color="blue"><strong><tt>[EXTRUDER_NAME]</tt></strong></font> (Klipper),
+                            <font color="blue"><strong><tt>[TOOL_INDEX]</tt></strong></font> (Marlin/RRF)<br>
+                          </li>
+                        </ul>
+                      </ul>
+                    </ul>
+                    <!-- <p id=startGcodeWarning style="display: none;">warning</p> -->
+                    </p><textarea id="START_GCODE" data-settings></textarea>
+                    <p style="color:red">
+                      <strong>Check over the start g-code preview below before printing!</strong>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label>Actual Start G-code</label></td>
+                  <td colspan="3" class="grayCell">
+                    <div start-gcode-preview></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for=END_GCODE>End G-code</label></td>
+                  <td colspan=3><textarea id="END_GCODE" data-settings>PRINT_END</textarea>
+                    <p>Copy your normal end G-code from your slicer (and replace any dynamic variables with real
+                      values).
+                  </td>
+                </tr>
+              </thead>
+            </thead>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

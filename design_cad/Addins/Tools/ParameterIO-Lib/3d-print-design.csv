@@ -1,0 +1,15 @@
+tight_tollerence,mm,0.2
+tight_tollerence_dia,mm,0.4
+free_tollerence,mm,0.3
+free_tollerence_dia,mm,0.6
+m3_hole_dia,mm,3.3
+m2_hole_dia,mm,2.3
+m5_hole_dia,mm,5.3
+layer_height,mm,0.2
+e_width,mm,0.45
+e_spacing,mm,e_width - layer_height * (1 - PI / 4)
+num_perims,,3
+num_tops_bottoms,,5
+default_wall_width,mm,floor(( e_width + ( num_perims - 1 ) * e_spacing ) * 100) / 100
+default_double_wall_width,mm,floor(( e_width + ( num_perims * 2 - 1 ) * e_spacing ) * 100) / 100
+default_top_bottom_height,mm,layer_height * num_tops_bottoms

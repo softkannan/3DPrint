@@ -39,13 +39,19 @@ Fusion 360's current selection of thread profiles aren't overly useful for those
  simple script that would generate custom thread profiles that are more conducive to 3D printing. The profiles are trapezoidal in nature with root and crest flats 1/4th the width of the thread pitch. This yields robust threads that will not break easily. The included thread angles are 50, 60, 70, 80, and 90 degrees. For reference the overhang angle of a thread printed in the vertical orientation is 90 - (threadAngle/2) degrees.
  
  Since many are not familiar with thread classes(tolerances) I tried to make the classes self-explanatory. When you select the class drop down you will see 0.###e for external threads, and 0.###i for internal threads. 0.### is the tolerance in millimeters compared to the nominal thread form. External threads are smaller than the nominal, and internal threads are larger than the nominal. If you designed a bolt with a class of 0.100e and a nut with a class of 0.100i, they would have a 0.1 + 0.1 = 0.2mm tolerance/gap between them when threaded together.
- 
+
+### Install
+
+- Copy the `Addins\FDM_Threads\ThreadKeeper` folder to `%appdata%\Autodesk\Autodesk Fusion 360\API\AddIns`
+- Copy the `G:\github\3DPrint\design_cad\Addins\FDM_Threads\ThreadLibrary` folder content to `%appdata%\Autodesk\Autodesk Fusion 360\API\AddIns\ThreadKeeper\Threads`
+- Copy the `G:\github\3DPrint\design_cad\MyAddins` folders to `%appdata%\Autodesk\Autodesk Fusion 360\API\AddIns` based on needed plugins
+
 ### Links
 
-[Thread Keeper Fusion 360 Plugin](https://github.com/thomasa88/ThreadKeeper)
-[Fusion-360-FDM-threads](https://github.com/dans98/Fusion-360-FDM-threads)
-[3D-Printed Threads](https://github.com/BalzGuenat/CustomThreads)
-[Custom Screw Creator](https://github.com/Bitfroest/CustomScrews)
+- [Thread Keeper Fusion 360 Plugin](https://github.com/thomasa88/ThreadKeeper)
+- [Fusion-360-FDM-threads](https://github.com/dans98/Fusion-360-FDM-threads)
+- [3D-Printed Threads](https://github.com/BalzGuenat/CustomThreads)
+- [Custom Screw Creator](https://github.com/Bitfroest/CustomScrews)
 
 ## Gears HelicalGear Plus
 

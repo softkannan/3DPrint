@@ -1,0 +1,81 @@
+{
+  "runtimeTarget": {
+    "name": "net6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    "net6.0": {
+      "FMLayerCpp/1.0.0": {
+        "dependencies": {
+          "FMCore": "0.9.0.0",
+          "FMGeometry": "0.9.0.0",
+          "FMLayer": "3.3.0.0",
+          "FMLayerDxf": "0.9.0.0"
+        },
+        "runtime": {
+          "FMLayerCpp.dll": {}
+        }
+      },
+      "FMCore/0.9.0.0": {
+        "runtime": {
+          "FMCore.dll": {
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
+          }
+        }
+      },
+      "FMGeometry/0.9.0.0": {
+        "runtime": {
+          "FMGeometry.dll": {
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
+          }
+        }
+      },
+      "FMLayer/3.3.0.0": {
+        "runtime": {
+          "FMLayer.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.3.0.0"
+          }
+        }
+      },
+      "FMLayerDxf/0.9.0.0": {
+        "runtime": {
+          "FMLayerDxf.dll": {
+            "assemblyVersion": "0.9.0.0",
+            "fileVersion": "0.9.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FMLayerCpp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FMCore/0.9.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FMGeometry/0.9.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FMLayer/3.3.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FMLayerDxf/0.9.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

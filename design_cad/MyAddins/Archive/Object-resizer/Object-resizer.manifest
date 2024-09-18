@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"04645d15-abf3-42de-8e8c-8486f6ef9f6e",
+	"author":	"Piotr krol",
+	"description":	{
+		"":	"This modifier can be used to resize an object using dimensional values instead of scale factor."
+	},
+	"version":	"1.0.0",
+	"runOnStartup":	true,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

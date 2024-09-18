@@ -1,0 +1,302 @@
+{
+	//** The name used to label the button in the Fusion UI.
+	"Export to Origin": {
+		"de": "Exportieren für Origin",
+		"es": "",
+		"fr": "Exporter vers Origin",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	//** Used as the tool tip of the command.
+	"Export the selected bodies or sketches to an SVG file that can be used by Shaper Origin.": {
+		"de": "Exportiere die ausgewählten Körper oder Skizzen in eine SVG-Datei, die von Shaper Origin verwendet werden kann.",
+		"es": "Exporte los cuerpos o bocetos seleccionados a un archivo SVG que Shaper Origin puede usar.",
+		"fr": "Exporter les corps ou les croquis sélectionnés vers un fichier SVG qui peut être lu par Shaper Origin.",
+		"it": "Esporta i corpi o gli schizzi selezionati in un file SVG che può essere utilizzato da Shaper Origin.",
+		"ja": "選択したボディまたはスケッチを、ShaperOriginで使用できるSVGファイルにエクスポートします。",
+		"ko": "선택한 바디 또는 스케치를 Shaper Origin에서 사용할 수 있는 SVG 파일로 내보냅니다.",
+		"zh_CN": "将选定的实体或草图导出到 Shaper Origin 可以使用的 SVG 文件。"
+	},
+
+	// Used as the description of the add-in.
+	"Various utilities to make it easy to use Fusion 360 designs with the Shaper Origin router.":	{
+		"de": "Verschiedene Dienstprogramme, die die Verwendung von Fusion 360-Designs für Shaper Origin erleichtern.",
+		"es": "",
+		"fr": "Divers programmes utilitaires permettant l'utilisation des dessins de Fusion 360 avec Shaper Origin.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	//** The following are different inputs types in the drop-down list.
+	"Single Solid Body": {
+		"de": "Einzelner Volumenkörper",
+		"es": "",
+		"fr": "Corps solide unique",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	"Solid Bodies Layout": {
+		"de": "Volumenkörper Layout",
+		"es": "",
+		"fr": "Disposition des corps solides",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	"Faces": {
+		"de": "Flächen",
+		"es": "",
+		"fr": "Faces",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	
+	"Entire Sketch": {
+		"de": "Vollständige Skizze",
+		"es": "",
+		"fr": "Croquis complet",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	"Sketch Profiles": {
+		"de": "Profil Skizze",
+		"es": "",
+		"fr": "Profils de croquis",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	//** The names and tooltips used for the various inputs in the command dialog.
+	"Input type": {
+		"de": "Eingangstyp",
+		"es": "",
+		"fr": "Type de saisie",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Choose the type of geometry that will be exported.": {
+		"de": "Wähle die Art der Geometrie, die exportiert werden soll.",
+		"es": "",
+		"fr": "Choisir le type de géométrie qui doit être exporté.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	"Selection": {
+		"de": "Auswahl",
+		"es": "",
+		"fr": "Sélection",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Select the geometry to be exported.": {
+		"de": "Wähle die zu exportierende Geometrie aus.",
+		"es": "",
+		"fr": "Sélectionner la géométrie à exporter.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Export Construction": {
+		"de": "Konstruktion exportieren",
+		"es": "",
+		"fr": "Exporter la construction",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Export construction geometry as guide curves.": {
+		"de": "Konstruktionsgeometrie als Hilfslinie exportieren.",
+		"es": "",
+		"fr": "Exporter la géométrie de la construction en tant que lignes guides.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Text as Guide": {
+		"de": "Text als Hilfslinie",
+		"es": "",
+		"fr": "Texte en tant que ligne guide",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Export text as guide curves. Otherwise text will be exported as on line cut.": {
+		"de": "Text als Hilfslinie exportieren. Ansonsten wird der Text als Fräsart „auf Linie“ exportiert.",
+		"es": "",
+		"fr": "Exporter le texte en tant que lignes guides. Sinon, le texte sera exporté en tant que « sur ligne ».",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Advanced": {
+		"de": "Erweitert",
+		"es": "",
+		"fr": "Avancé",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Advanced mode provides support for different types of geometry export. Simple mode is limited to single solid body export.": {
+		"de": "Der erweiterte Modus bietet Unterstützung für verschiedene Arten des Geometrieexports. Der einfache Modus ist auf den Export eines einzelnen Volumenkörpers beschränkt.",
+		"es": "",
+		"fr": "Le mode avancé permet d'exporter différents types de géométrie. Le mode simple est limité à l'exportation d'un seul corps solide.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	"Show Overcuts": {
+		"de": "Überschneidungen anzeigen",
+		"es": "",
+		"fr": "Afficher les chevauchements",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	//** The text displayed for each of the different inputs types.
+	"Select a single face to define the \"top\" of the model, all details that can be cut from the top will be exported as an appropriately color coded SVG file.": {
+		"de": "Wähle eine einzelne Fläche aus, um die Oberseite des Modells zu definieren. Alle fräsbaren Details der Oberseite werden als entsprechend farbkodierte SVG-Datei exportiert.",
+		"es": "",
+		"fr": "Sélectionner une seule face pour définir le \"haut\"du modèle. Tous les détails fraisables à partir du haut sont exportés sous forme de fichier SVG avec le codage couleur correspondant.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	"Select one or more bodies that lie on the X-Y plane. They will all be exported as a single SVG.": {
+		"de": "Wähle einen oder mehrere Körper aus, die auf der xy-Ebene liegen. Diese werden alle als eine SVG exportiert.",
+		"es": "Sélectionner un ou plusieurs corps qui se trouvent sur le plan xy. Ils seront tous exportés en un seul fichier SVG.",
+		"fr": "",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	"Select the profiles within a single sketch to be exported. Smart color coding is not active, each profile is treated as a <i>cut outside</i> shape. Plan on changing the cut types on the tool.": {
+		"de": "Wähle die Profile innerhalb einer einzelnen Skizze aus, die exportiert werden sollen. Die intelligente Farbkodierung ist nicht aktiv, jedes Profil wird als Fräsart <i>„Außen“<i> behandelt. Die Fräsart kannst du später an Origin ändern.",
+		"es": "",
+		"fr": "Sélectionner les profils à exporter au sein d’un seul croquis. Le codage couleur intelligent n'est pas actif, chaque profil est traité comme un type de fraisage <i>„extérieur“<i>. Tu peux modifier plus tard le type de fraisage sur Origin.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	
+	// "Select a sketch to export. The entire contents of the sketch will be exported.<br><br>Choose if sketch curves set as <i>Construction</i> will be ignored or exported as guide curves.": {
+		// "de": "Wähle eine Skizze zum Exportieren. Der gesamte Inhalt der Skizze wird exportiert.<br><br>Wähle, ob Skizzenkurven, die als <i>Konstruktion<i> festgelegt wurden, ignoriert oder als Hilfslinie exportiert werden sollen.",
+		// "es": "",
+		// "fr": "Sélectionner un croquis à exporter. L'intégralité du contenu du croquis est exportée. Choisis si les courbes de croquis définies comme <i>construction<i> doivent être ignorées ou exportées en tant que lignes guides.",
+		// "it": "",
+		// "ja": "",
+		// "ko": "",
+		// "zh_CN": ""
+	// },
+
+	"Select a sketch to export. The entire contents of the sketch will be exported.": {
+		"de": "Wähle eine Skizze zum Exportieren. Der gesamte Inhalt der Skizze wird exportiert.",
+		"es": "",
+		"fr": "Sélectionner un croquis à exporter. L'intégralité du contenu du croquis est exportée.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	"Selected parallel faces from the same body will be exported. Smart color coding is not active and each face is treated as a <i>cut outside</i> shape. Plan on changing the cut types on the tool.": {
+		"de": "Ausgewählte parallele Flächen desselben Körpers werden exportiert. Die intelligente Farbkodierung ist nicht aktiv, und jede Fläche wird als Fräsart <i>Außen<i> behandelt. Die Fräsart kannst du später an Origin ändern.",
+		"es": "",
+		"fr": "Les faces parallèles sélectionnées du même corps sont exportées. Le codage couleur intelligent n'est pas actif et chaque face est traitée comme un type de fraisage <i>„extérieur“<i>. Tu peux modifier plus tard le type de fraisage sur Origin.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	//** Various other text used in the dialog.
+	"Select the entity to export.": {
+		"de": "Wähle die zu exportierende Einheit.",
+		"es": "",
+		"fr": "Sélectionner l'entité à exporter.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+	
+	"Version": {
+		"de": "Version",
+		"es": "",
+		"fr": "Version",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},
+
+	// Prompt for the save as dialog.
+	"Specify output filename": {
+		"de": "Ausgabedateiname festlegen",
+		"es": "",
+		"fr": "Spécifier le nom du fichier de sortie",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	},		
+
+	//** Error messages.
+	"There is a current limitation that referenced components cannot be used. You must first break the link on the linked component in the browser and then run the \"Export to Origin\" command.\n\nYou can undo the break link after you have exported the SVG to maintain the link.": {
+		"de": "Aktuell gibt es eine Einschränkung, dass verknüpfte Komponenten nicht verwendet werden können. Du musst zuerst die Verknüpfung der Komponenten im Browser aufheben und dann den Befehl \"Exportieren für Origin\" ausführen. Du kannst die Aufhebung der Verknüpfung rückgängig machen, nachdem du die SVG exportiert hast, um die Verknüpfung beizubehalten.",
+		"es": "",
+		"fr": "Il existe actuellement une restriction selon laquelle les composants liés ne peuvent pas être utilisés. Il faut d'abord supprimer dans le navigateur la liaison entre les composants et ensuite exécuter la commande \"Exporter vers Origin\". On peut annuler cette suppression après l'exportation du SVG afin de conserver la liaison.",
+		"it": "",
+		"ja": "",
+		"ko": "",
+		"zh_CN": ""
+	}
+}

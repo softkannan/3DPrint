@@ -1,0 +1,14 @@
+layer_height, mm,0.2
+e_width, mm,0.45
+e_spacing, mm, e_width - layer_height * (1 - PI / 4)
+num_perims, ,4
+num_tops_bottoms, ,5
+m3_hole, mm,3.3
+m3_head, mm,5.8
+m3_thread, mm,2.7
+m3_hex_nut, mm,6.2
+m3_square_nut, mm,5.5
+m5_hole, mm,5.3
+m5_head, mm,10
+perims_width, mm, floor(( e_width + ( num_perims - 1 ) * e_spacing ) * 100) / 100
+double_perims_width, mm, floor(( e_width + ( num_perims * 2 - 1 ) * e_spacing ) * 100) / 100

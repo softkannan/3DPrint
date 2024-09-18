@@ -1,0 +1,14 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"DE184562-A1F6-44AC-98C4-BE1947FD1D3B",
+	"author":	"Chris Drake",
+	"copyright":	"(C) 2020 - Chris Drake.  All rights reserved.",
+	"description":	{
+		"":	"Insert optimal aerofoil or hydrofoil shapes to perfectly suit your needs."
+	},
+	"version":	"1.2.0",
+	"runOnStartup":	true,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

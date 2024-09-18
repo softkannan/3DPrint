@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"a6cd5118-fa57-41c1-a21d-8c4e224c3e62",
+	"author":	"Daniel Bartlett",
+	"description":	{
+		"":	"An inspection tool to determine how suitable a part is for the FFF additive manufacturing process."
+	},
+	"version":	"",
+	"runOnStartup":	true,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

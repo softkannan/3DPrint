@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"C5FE205F-A0DF-4DE7-9844-DB49D250F45E",
+	"author":	"Nico Schlueter",
+	"description":	{
+		"":	"Add-In for creating Luer Fittings."
+	},
+	"version":	"1.0.0",
+	"runOnStartup":	true,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

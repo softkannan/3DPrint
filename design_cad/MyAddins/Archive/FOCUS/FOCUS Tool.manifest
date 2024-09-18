@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"F01E3C79-0D5D-4068-99F7-ABF932F63A48",
+	"author":	"Joe Palmer",
+	"description":	{
+		"":	"Release version of the FOCUS tool. Created as an Add-in, button added to the \"Inpect\" menu."
+	},
+	"version":	"1.3.0",
+	"runOnStartup":	true,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

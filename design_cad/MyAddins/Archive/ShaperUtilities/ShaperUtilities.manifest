@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"64AFAC1B-61C4-4289-B153-ED168E619C2F",
+	"author":	"Brian Ekins",
+	"description":	{
+		"":	"Various utilities to make it easy to use Fusion 360 designs with the Shaper Origin router."
+	},
+	"version":	"1.7.0",
+	"runOnStartup":	true,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://shapertools.com/blog/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Export to Shaper Origin</title>
+<meta name="description" content='The "Export to Origin" command allows you easily export your Fusion 360 design as an annotated SVG that can be directly used by your Shaper Origin.'>
+<meta name="keywords" content="handheld CNC, shaper tools, cnc, fabrication, Origin, portable, router, Shaper, shapermade, Woodworking, Fusion 360, Fusion, ekins">
+
+<meta name="author" content="Shaper Tools">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<link rel="stylesheet" href="./files/bootstrap.min.css">
+<link rel="stylesheet" href="./files/main.css">
+<link rel="stylesheet" href="./files/setting.css">
+<link rel="stylesheet" href="./files/shaper.css">
+
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script>
+            document.createElement('video');
+        </script>
+        <![endif]-->
+
+</head>
+<body>
+
+<nav class="navbar navbar-pasific navbar-mp megamenu navbar-fixed-top static top-nav-collapse">
+<div class="container-fluid">
+<div class="navbar-header">
+
+<a class="navbar-brand page-scroll" href="https://shapertools.com/" style="width:200px">
+<img src="./files/logo.svg" alt="Shaper Logo" height="90" class="invert">
+</a>
+</div>
+<div class="navbar-collapse collapse navbar-main-collapse">
+</div>
+</div>
+</nav>
+<div class="mt70" id="banner" style="right: 0; left: 0; z-index: 1029">
+<div class="container">
+<div class="row mt10" style="background-color:#2B2A28">
+<div class="col-md-12 text-center hidden">
+<h5 class="countdown-text color-light font-open-sans"> </h5>
+</div>
+</div>
+
+<h2 class="font-dosis">Fusion 360 Export to Origin Command</h2>
+<p>The <b>Export to Origin</b> command in Fusion 360 allows you to easily export geometry from Fusion 360 to an SVG file that can be used by your Shaper Origin tool. Depending on what you want to cut and the geometry you have in Fusion 360, the command provides several options, which are explained below.</p>
+
+<h3 class="font-dosis">Advanced/Simple Modes</h3>
+<p>A checkbox on the command dialog lets you choose if you're running in a simple or advanced mode. When in simple mode, it's set to allow only a single solid body selection. Changing to "Advanced" mode displays a drop-down to allow you to choose between "Single Solid Body", "Solid Bodies Layout", "Faces", "Entire Sketch", or "Sketch Profiles". The dialog in simple mode is shown below. See the documentation below for "Single Solid Body" for detailed information about this option.</p>
+
+<div align="center"><img src="files/SimpleMode.png" border=0 align="middle" alt="Simple Mode"></div>
+<br>
+
+<p>Below is the dialog when the Advanced mode is enabled, displaying the drop-down to choose the input type. Each of the input type options is described in detail below.</p>
+
+<div align="center"><img src="files/AdvancedOptions.png" border=0 align="middle" alt="Advanced Mode"></div>
+<br>
+
+<h3 class="font-dosis">Single Solid Body</h3>
+<p>When in Simple mode or in Advanced mode with the "Single Solid Body" input type selected, you can output the shape of an entire solid body as an appropriately annotated SVG to use with your Origin tool. When using a solid body, you specify the entire body by selecting a face on the "top" of the body. The selected face identifies which body to output and indicates the "up" direction. The selected face is on the side of the board you will be cutting. Even though only the face is highlighted, the entire body is used.</p>
+
+<p>The part's orientation within the SVG file is automatically inferred by looking at the part geometry. The part will be oriented such that the longest edge lies along the X-axis. For parts without a straight edge, the result is somewhat random. If the default result is not good, you can control the orientation of a body in the SVG file by using the "Solid Bodies Layout" option as described below.</p>
+
+<p>Below is an example part that contains some features accessible from one side of the part and a feature accessible from one of the sides.</p>
+<div align="center"><img src="files/SolidPart.png" border=0 align="middle" alt="Example Part"></div>
+<br>
+
+<p>To create a file to cut the main shape of the part, select any of the faces on the top side of the part. For this example, any of the faces highlighted below can be used.</p>
+
+<div align="center"><img src="files/FaceSelection.png" border=0 align="middle" alt="Top Selection"></div>
+<br>
+
+<p>The resulting SVG file is shown below. You can see the output only includes those features you can see and cut from the top. The black shape indicates the area to cut out by cutting around the outside, and the gray area indicates a pocket. The white shape representing the hole defines an interior cut. An interior cut is different from a pocket in that it goes through the part.</p>
+
+<div align="center"><img src="files/BodyTop.svg" border=0 align="middle" alt="SVG of Top"></div>
+<br>
+
+<p>To cut the side with the slot, rerun the command and choose a planar face that defines the "up" direction. For example, any of the faces highlighted below can be selected.
+
+<div align="center"><img src="files/SolidPartSelectSide.png" border=0 align="middle" alt="Top Selection"></div>
+<br>
+
+<p>Selecting one of the faces shown above creates the SVG shown below.</p>
+
+<div align="center"><img src="files/BodySide.svg" border=0 align="middle" alt="SVG of Side"></div>
+<br>
+
+<p>The "Single Solid Body" option is typically the best option when cutting a whole part because it considers the entire shape and all of the features of the selected body. This option is also convenient when working with an assembly because the body selected can be in any orientation because the "up" side is defined by the selected face rather than its orientation within the model.</p>
+
+<h3 class="font-dosis">Solid Bodies Layout</h3>
+<p>In Advanced mode, you can select the "Solid Bodies Layout" input type. This option allows you to select any number of bodies, with the requirement that those bodies lie on the X-Y plane. The advantage of this approach is all the selected bodies are output together, and their relative position in Fusion 360 is maintained in the SVG file. This means you can lay out the parts of your assembly onto the stock and output the entire assembly at once. In addition, the model coordinate system is used for the SVG file, so the orientation of the bodies is in respect to the X and Y axes in Fusion 360 and will be the same in the SVG file.</p>
+
+<p>You can use any method to create the layout in Fusion 360. For example, you could create the bodies by using sketches on the X-Y plane and creating extrusions to create the resulting bodies in the correct location. However, a more common approach will be to create an assembly using typical Fusion 360 workflows where each part is a separate component and is positioned in any orientation. Then, once the assembly is completed, you rearrange the parts so that they all lie on the X-Y plane. Here's one <a href="CreateLayout.html">Fusion 360 workflow that demonstrates that process.</a> 
+</p>
+
+<p>Below is an example of a simple Fusion 360 assembly that consists of four parts.</p>
+
+<div align="center"><img src="files/AssemblyExample.png" border=0 align="middle" alt="Assembly Example"></div>
+<br>
+
+<p>Below is the same assembly laid out on a stock board. The layout was done using Fusion 360 functionality. Notice the model X-Y axes in the lower-left corner. This orientation is used when exporting the geometry. Also, the parts need to be oriented such that the upper side, or the side you intend to cut, is facing in the positive Z direction. When selecting bodies in "Solid Bodies Layout" mode, you select the entire body and don't identify an upper face since it's assumed to be correctly oriented.</p>
+
+<div align="center"><img src="files/LayoutExample.png" border=0 align="middle" alt="Assembly Example"></div>
+<br>
+
+<p>In the layout mode, you can select multiple bodies to export. The only requirement is the bodies must be oriented such that each body's largest planar face is parallel to the model X-Y plane. If a body is not selectable, it doesn't meet that requirement. Below is the resulting SVG file from the assembly above, with all four bodies selected. You can see how the bodies maintain their original position and orientation.</p>
+
+<div align="center"><img src="files/LayoutExample.svg" border=0 align="middle" alt="Assembly Example" height="350"></div>
+<br>
+
+<h3 class="font-dosis">Faces</h3>
+<p>In Advanced mode, you can select the "Faces" input type. This option allows you to select one or more planar faces for output. When exporting faces, only the shape of the selected faces, not the body, is output, and they're identified as "cut outside" operations. If more than one face is selected, it must be parallel to the first face and be from the same body. For example, the faces highlighted below are valid selections since they are both from the same body and are parallel.</p>
+
+<div align="center"><img src="files/FaceSelection.png" border=0 align="middle" alt="Face Select"></div>
+<br>
+
+<p>And this results in the SVG shown below. You can see the shape of the faces is exported without any regard to how they're positioned within the solid.</p>
+
+<div align="center"><img src="files/FaceSelection.svg" border=0 align="middle" alt="Face Select"></div>
+<br>
+
+<h3 class="font-dosis">Entire Sketch</h3>
+<p>Sometimes you may not need an entire solid and just a simple 2D sketch describes the geometry you want to cut. The "Entire Sketch" and "Sketch Profiles" input types allow you to use just sketch geometry. The "Entire Sketch" option allows you to select a sketch and all of the geometry of the entire sketch is written out to the SVG. It's written out as "cut along" geometry since a sketch can contain open curves. This is useful for many designs.</p>
+
+<p>Below is an example sketch to demonstrate the capabilities of the export.</p>
+
+<div align="center"><img src="files/Sketch.png" border=0 align="middle" alt="Sketch"></div>
+<br>
+
+<p>And this results in the SVG shown below. Notice the outline of the text is exported but the circle, which is designated as construction in Fusion 360, is not output. Construction geometry is ignored.</p>
+
+<div align="center"><img src="files/SketchText.svg" border=0 align="middle" alt="Sketch Export with Text"></div>
+<br>
+
+<p>When exporting a sketch, you also have two additional options, as shown below.
+<div align="center"><img src="files/SketchOptions.png" border=0 align="middle" alt="Sketch"></div></p>
+<br>
+
+<p>The "Export Construction" option specifies if sketch curves that are specified as "Construction" in Fusion will be exported. If they are exported, they are exported as guide curves.</p>
+
+<p>The "Text as Guide" option specifies is text should be exported as guide or cut-along curves.</p>
+
+<h3 class="font-dosis">Sketch Profiles</h3>
+<p>The "Sketch Profiles" input type allows you to export selected sketch geometry by selection profiles. A profile is a closed area within a sketch. Profiles are what you select when creating most Fusion 360 features, like extrude or revolve. Because profiles always define a closed area, they are written as "cut outside" areas to the SVG.</p>
+
+<p>Below is an example sketch to demonstrate the capabilities of the export.</p>
+
+<div align="center"><img src="files/Profile.png" border=0 align="middle" alt="Sketch"></div>
+<br>
+
+<p>The picture below illustrates all of the profiles that Fusion 360 has identified within the sketch.</p>
+
+<div align="center"><img src="files/ProfileColors.png" border=0 align="middle" alt="Sketch"></div>
+<br>
+
+<p>You can select one or more profiles from the same sketch. For example, the picture below shows the SVG file that is created when selecting the red profile shown above.</p>
+
+<div align="center"><img src="files/Profile.svg" border=0 align="middle" alt="Sketch"></div>
+<br>
+
+</div>
+</div>
+</div>
+
+<div id="footer" class="footer-two bg-black pt20">
+<div class="container-fluid bb-dotted-1">
+<div class="container">
+<div class="row">
+
+<div class="col-md-5 col-sm-12 col-xs-12 mb20 text-center">
+<a target="_blank" href="https://www.facebook.com/Shapertools/"><img src="./files/Facebook_Logo.png" alt="Facebook Logo">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a target="_blank" href="https://twitter.com/shapertools"><img src="./files/Twitter_Logo.png" alt="Twitter Logo"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a target="_blank" href="https://www.instagram.com/shapertools/"><img src="./files/Instagram_Logo.png" alt="Instagram Logo"></a>
+</div>
+
+<div class="col-md-7 col-sm-12 col-xs-12 text-center mb20 pl0 pr0">
+<div class="text-center">
+<a href="https://shapertools.com/#Howitworks" class="mr10">How It Works</a>
+<a href="https://shapertools.com/#Projects" class="mr10">Projects</a>
+<a href="https://shapertools.com/#Origin" class="mr10">Origin</a>
+<a href="https://shapertools.com/features/" class="mr10">Features</a>
+<a href="https://shapertools.com/blog/" class="mr10">Blog</a>
+<a href="https://shapertools.com/faq/" class="mr10">FAQ</a>
+<a href="https://shapertools.com/about/" class="mr10">About Us</a>
+<a href="https://shapertools.com/careers/" class="mr10">Careers</a>
+<a href="https://shapertools.com/press/" class="mr10">Press</a>
+<a href="https://shapertools.com/contact/" class="mr10">Contact</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid pt20">
+<div class="container">
+<div class="row">
+
+<div class="col-md-6 col-sm-6 col-xs-6 pull-left">
+<p class="color-light">Copyright ©2022 <a href="https://www.shapertools.com/">Shaper Tools</a>. All rights reserved.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--
+<script src="./files/jquery.min.js.download"></script>
+<script src="./files/bootstrap.min.js.download"></script>
+<script src="./files/jquery.appear.js.download"></script>
+<script src="./files/isotope.pkgd.min.js.download"></script>
+<script src="./files/parallax.min.js.download"></script>
+<script src="./files/jquery.sticky.js.download"></script>
+<script src="./files/imagesloaded.pkgd.min.js.download"></script>
+<script src="./files/main.js.download"></script>
+-->
+</body></html>

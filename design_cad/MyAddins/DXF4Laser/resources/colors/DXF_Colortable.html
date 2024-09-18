@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>DXF Color Table</title>
+    <script src='http://code.jquery.com/jquery-3.1.1.min.js'></script>
+    <style type='text/css'>
+      body{
+        background-color: #333;
+      }
+      .color-tile{
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        text-shadow: 0px 0px 2px grey, 0px 0px 1px white;
+        font-size: small;
+        position: relative;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 32px;
+      }
+      .color-tiles{
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid gray;
+        display: inline-block;
+        background-color: white;
+      }
+      .tile-row{
+        line-height: 0;
+        min-height: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script language='javascript'>
+      $.getJSON( "DXF_Colortable.json", function( data ) {
+        var $tiles = $( "<div/>", {
+          "class": "color-tiles"
+        }).appendTo( "body" );
+        var $row = $( "<div class='tile-row'/>" ).appendTo($tiles)
+        $( "<span class='color-tile' title='0: DEFAULT' style='background-color:rgba(0,0,0,0)'>0</span>" ).appendTo($row);
+        for ( var i=1; i < data.length; ++i ) {
+          if( i % 10 == 0 ){
+            $row = $( "<div class='tile-row'/>" ).appendTo($tiles)
+          }
+          var rgb = data[i];
+          var rgb_str = '('
+            + rgb[0] + ', '
+            + rgb[1] + ', '
+            + rgb[2] + ')';
+          var $tile = $( "<span class='color-tile' title='" + i + ": " + rgb_str + "' style='background-color:rgb"
+            + rgb_str + "'>" + i + "</span>" );
+          if( i < 10 || i >=250 || (i % 2) )
+            $tile.appendTo($row);
+          else
+            $tile.prependTo($row);
+        };
+      });
+    </script>
+  </body>
+</html>

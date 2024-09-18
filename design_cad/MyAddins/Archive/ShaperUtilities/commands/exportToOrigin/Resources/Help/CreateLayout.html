@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://shapertools.com/blog/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Create Fusion 360 Layout</title>
+<meta name="description" content='Demonstration of a workflow to layout parts of an assembly on the X-Y model plane.'>
+<meta name="keywords" content="handheld CNC, shaper tools, cnc, fabrication, Origin, portable, router, Shaper, shapermade, Woodworking, Fusion 360, Fusion, ekins">
+
+<meta name="author" content="Shaper Tools">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<link rel="stylesheet" href="./files/bootstrap.min.css">
+<link rel="stylesheet" href="./files/main.css">
+<link rel="stylesheet" href="./files/setting.css">
+<link rel="stylesheet" href="./files/shaper.css">
+
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script>
+            document.createElement('video');
+        </script>
+        <![endif]-->
+
+</head>
+<body>
+
+<nav class="navbar navbar-pasific navbar-mp megamenu navbar-fixed-top static top-nav-collapse">
+<div class="container-fluid">
+<div class="navbar-header">
+<a class="navbar-brand page-scroll" href="https://shapertools.com/" style="width:200px">
+<img src="./files/logo.svg" alt="Shaper Logo" height="90" class="invert">
+</a>
+</div>
+<div class="navbar-collapse collapse navbar-main-collapse">
+</div>
+</div>
+</nav>
+<div class="mt70" id="banner" style="right: 0; left: 0; z-index: 1029">
+<div class="container">
+<div class="row mt10" style="background-color:#2B2A28">
+<div class="col-md-12 text-center hidden">
+<h5 class="countdown-text color-light font-open-sans"> </h5>
+</div>
+</div>
+
+<h2 class="font-dosis">Creating a Layout of an Assembly</h2>
+<p>If you have a subscription to Fusion 360, you can use the <b>Arrange</b> command in the Manufacturing Model workspace to automatically layout and nest the parts. The <b>Export to Origin</b> command is available when a Manufacturing Model is active so you can exports the bodies you have laid out.</p>
+
+<p>If you have a "Fusion 360 for personal, hobby use" license, you don't have access to the <b>Arrange</b> command, but there's a manual way to accomplish the same result. Here's an example of how to layout parts of an existing assembly so they all are on the root component's X-Y plane. Once the layout is created, the bodies can be selected when using the "Solid Bodies Layout" option in the "Export to Origin" command. For this example, I'll use the assembly shown below. The important thing to notice in this assembly is that each part is a unique component. The same model can be constructed using bodies that all exist in the root component, but each part must be a separate component for this workflow to work. If you have an existing assembly that isn't constructed using components but instead is made up of  bodies, you can right-click on each body and choose the "Create Components from Bodies" command to convert each body into a component.</p>
+
+<div align="center"><img src="files/AssemblyExample.png" border=0 align="middle" alt="Assembly Example"></div>
+<br>
+
+<p>Once you have an assembly made up of assembled components, you can use the steps below to create the layout.</p>
+
+<p>
+<ol>
+<li>Create a new design. Doing the layout as a separate design will leave the original assembly unaffected.</li>
+
+<li>Save the new design. Save the new design within the same project as the assembly you'll be laying out. The name or specific location within the project doesn't matter. In this example, I've saved it as "Stool Layout".</li>
+
+<li>Find the assembly you want to layout in the data panel, right-click and choose the "Insert into Current Design" option, as shown below. The position and orientation don't matter, so accepting the default is OK.
+<div align="center"><img src="files/InsertDesign.png" border=0 align="middle" alt="Insert Design"></div>
+<br>
+</li>
+<li>We now need to reposition each part, so it lies on the X-Y plane. To move the parts, you first need to suppress all joints. You do this by finding the joints in the browser and using the "Suppress" command in the context menu, as shown below. You can select more than one joint at a time and suppress them all simultaneously. If you have subassemblies in the design, you will also need to suppress any joints within the subassemblies too.
+<div align="center"><img src="files/SuppressJoints.png" border=0 align="middle" alt="Suppress Joints"></div>
+<br>
+</li>
+<li>After suppressing the joints, run the "Capture Position" command, as shown below.
+<div align="center"><img src="files/CapturePosition.png" border=0 align="middle" alt="Capture Position"></div>
+<br>
+</li>
+
+<li>Create a body that represents the stock board you'll be cutting the parts out of. Do this by creating a new sketch on the base XY construction plane, as shown below.
+<div align="center"><img src="files/BaseXYPlane.png" border=0 align="middle" alt="Base XY Plane"></div>
+<br>
+</li>
+</p>
+<li>Draw the shape of your stock. Typically, this will be a rectangle, but it can be any shape if you're using a left-over board. An example sketch is shown below.
+<div align="center"><img src="files/StockSketch.png" border=0 align="middle" alt="Stock Sketch"></div>
+<br>
+</li>
+<li>Extrude the stock the depth of your material so you now have a representation of your stock.
+<div align="center"><img src="files/StockExtrude.png" border=0 align="middle" alt="Stock Sketch"></div>
+<br>
+</li>
+<li><p>Not it's time to start laying out the parts of your design onto the stock board. This approach uses a planar joint to do that. Steps 9 through 12 detail the process to lay out each piece.</p>
+<p>Run the "Joint" command and select the "Planar" type, as shown below.</p>
+<div align="center"><img src="files/PlanarJoint.png" border=0 align="middle" alt="Planar Joint"></div>
+<br>
+</li>
+<li>
+For the "Component1" selection, select a face on the part on the "bottom" of the part. In the example below, I'm choosing the top of the seat as the "bottom", because there are some features under the seat that need to be machined. When creating a joint, you can choose from many snap locations on the selected face. The location you choose doesn't matter for this workflow.
+<div align="center"><img src="files/JointSelect1.png" border=0 align="middle" alt="Component1 selection"></div>
+<br>
+</li>
+<li>
+For the "Component2" selection, select the face on the top of the stock board. Again, it doesn't matter which location point you choose, but it's typically the easiest to use the one at the center of the board, as illustrated below.
+<div align="center"><img src="files/JointSelect2.png" border=0 align="middle" alt="Component2 selection"></div>
+<br>
+</li>
+<li>
+After specifying the second component, the board will animate moving over to the stock and demonstrate how it can be repositioned. You can move it in the X and Y directions and rotate it using the widget. Use the widget to position and orient the board where you want it on the stock. You can use the fields in the dialog to specify specific values.
+<div align="center"><img src="files/BoardPosition1.png" border=0 align="middle" alt="Board Positioning"></div>
+<br>
+Continue with steps 9 through 12 to layout each board on the stock.
+<div align="center"><img src="files/BoardPosition2.png" border=0 align="middle" alt="Board Positioning"></div>
+<br>
+</li>
+
+<li>
+To edit the position of a board you've already placed on the stock, you can move it around using the mouse, and because of the joint, it will stay positioned on the stock board. You can also edit the joint and change the values in the dialog to modify the rotation or X and Y offsets. To edit the joint, find the joint in the browser and select the "Edit Joint" command in the context menu.
+</li>
+</ol>
+<br>
+<p>You can now use the "Export to Origin" with the "Solid Bodies Layout" option to export all of the bodies as a single SVG maintaining their relative positions. However, there is a bug in Fusion 360 where the "Export to Origin" command cannot correctly use parts from an external reference. This problem is easy to work around because you can use the "Break Link" command to convert the references to local parts. The "Break Link" command is accessed from the context menu of the referenced component, as shown below. Break the link, run the "Export to Origin" command, and then do an undo operation to undo the broken link and convert it back to an external reference. It's desirable to have it be an external reference because if the original parts and assembly are modified, the changes will automatically be reflected in this layout assembly.
+<div align="center"><img src="files/BreakLink.png" border=0 align="middle" alt="Board Positioning"></div>
+<br>
+</div>
+</div>
+</div>
+
+<div id="footer" class="footer-two bg-black pt20">
+<div class="container-fluid bb-dotted-1">
+<div class="container">
+<div class="row">
+
+<div class="col-md-5 col-sm-12 col-xs-12 mb20 text-center">
+<a target="_blank" href="https://www.facebook.com/Shapertools/"><img src="./files/Facebook_Logo.png" alt="Facebook Logo">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a target="_blank" href="https://twitter.com/shapertools"><img src="./files/Twitter_Logo.png" alt="Twitter Logo"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a target="_blank" href="https://www.instagram.com/shapertools/"><img src="./files/Instagram_Logo.png" alt="Instagram Logo"></a>
+</div>
+
+<div class="col-md-7 col-sm-12 col-xs-12 text-center mb20 pl0 pr0">
+<div class="text-center">
+<a href="https://shapertools.com/#Howitworks" class="mr10">How It Works</a>
+<a href="https://shapertools.com/#Projects" class="mr10">Projects</a>
+<a href="https://shapertools.com/#Origin" class="mr10">Origin</a>
+<a href="https://shapertools.com/features/" class="mr10">Features</a>
+<a href="https://shapertools.com/blog/" class="mr10">Blog</a>
+<a href="https://shapertools.com/faq/" class="mr10">FAQ</a>
+<a href="https://shapertools.com/about/" class="mr10">About Us</a>
+<a href="https://shapertools.com/careers/" class="mr10">Careers</a>
+<a href="https://shapertools.com/press/" class="mr10">Press</a>
+<a href="https://shapertools.com/contact/" class="mr10">Contact</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid pt20">
+<div class="container">
+<div class="row">
+
+<div class="col-md-6 col-sm-6 col-xs-6 pull-left">
+<p class="color-light">Copyright ©2022 <a href="https://www.shapertools.com/">Shaper Tools</a>. All rights reserved.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--
+<script src="./files/jquery.min.js.download"></script>
+<script src="./files/bootstrap.min.js.download"></script>
+<script src="./files/jquery.appear.js.download"></script>
+<script src="./files/isotope.pkgd.min.js.download"></script>
+<script src="./files/parallax.min.js.download"></script>
+<script src="./files/jquery.sticky.js.download"></script>
+<script src="./files/imagesloaded.pkgd.min.js.download"></script>
+<script src="./files/main.js.download"></script>
+-->
+</body></html>

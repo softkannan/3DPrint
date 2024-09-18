@@ -1,0 +1,23 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"author":	"Niklas Pollonen",
+	"description":	{
+		"":	"SpurGearGen"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true,
+	"id":	"140B743C-E6F6-4C52-B90D-E0F20A1AF67D",
+	"version":	"1.0.0",
+	"runOnStartup":	true,
+	"sourcewindows":	"SpurGearGen.vcxproj",
+	"sourcemac":	"SpurGearGen.xcodeproj"
+}
+
+
+
+
+
+
+
+

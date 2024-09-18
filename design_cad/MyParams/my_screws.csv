@@ -1,0 +1,20 @@
+Name,Value,Units,Comments
+tolerance,0.25,mm,ABS 0.5/0.25; PLA 0.4/0.2
+M3_Head_Diameter_Outer,6,mm,Head Height 2mm
+M3_HeatInsert_Dia,4.5,mm,Height 4mm
+M3_HeatInsert_Type2_Dia,4.1,mm,Height 2.9 mm
+M2_HeatInsert_Type2_Dia,3.3,mm,Height 2.9mm
+M3_Tapping_Screw_Dia,3,mm,Height 8;12;16mm; Head Height 2.25mm; 
+M3_Tapping_Screw_Head_Dia,5.1,mm,
+M2_6_Tapping_Screw_Dia,2.6,mm,Height 8;10;12mm; Head Height 1.5mm
+M2_6_Tapping_Screw_Head_Dia,4.25,mm,
+M2_Tapping_Screw_Dia,2,mm,Height 4;6;8;10;12;16mm; Head Height 1.5mm
+M2_Tapping_Screw_Head_Dia,3.5,mm,
+M1_7_Tapping_Screw_Dia,1.7,mm,Height 4;6;8mm; Head Height 1.5mm
+M1_7_Tapping_Screw_Head_Dia,3.2,mm,
+M1_4_Tapping_Screw_Dia,1.4,mm,Height 4;6;8mm; Head Height 1.5mm
+M1_4_Tapping_Screw_Head_Dia,2.5,mm,
+M1_2_Tapping_Screw_Dia,1.2,mm,Height 3;4;6mm; Head Height 1.5mm
+M1_2_Tapping_Screw_Head_Dia,2,mm,
+M1_Tapping_Screw_Dia,1,mm,Height 3;4mm; Head Height 1.5mm
+M1_Tapping_Screw_Head_Dia,1.8,mm,

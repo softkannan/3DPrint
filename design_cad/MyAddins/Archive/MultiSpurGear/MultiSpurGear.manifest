@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"0BDAE0A5-F01B-4630-B908-81165EB931F2",
+	"author":	"Gears workshop",
+	"description":	{
+		"":	"Converts pitch circles to spur gears. "
+	},
+	"version":	"1.0.0",
+	"runOnStartup":	true,
+	"supportedOS":	"windows",
+	"editEnabled":	true
+}
