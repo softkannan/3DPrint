@@ -1,0 +1,1 @@
+explorer %appdata%\Autodesk\Autodesk Fusion 360\API\AddIns

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="english">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Bottle cap thread calculator</title>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css" integrity="sha512-v8QQ0YQ3H4K6Ic3PJkym91KoeNT5S3PnDKvqnwqFD1oiqIl653crGZplPdU5KKtHjO0QKcQ2aUlQZYjHczkmGw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Bottle cap thread calculator</h1>
+      </header>
+
+      <br>
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>This tool calculates the thread specifications of bottle caps for modelling in CAD programs such as Fusion 360. </p>
+<p>This is intended for use with bottles that conform to <a href="https://www.astm.org/Standards/D2911.htm">ASTM D2911</a>,
+also known as "GPI" or "SPI" thread finishes. </p>
+<p>(While ASTM charges $60 for the spec, the important parts can be found <a href="https://www.sanleplastics.com/solution/plastic-bottle-cap-threads-specifications/">freely online</a>.)</p>
+<p>This assumes that you are modelling the thread by creating a coil with a triangular cross section, then
+cutting the tip of the triangle off with a cylindrical hole. </p>
+<h3>Calculator</h3>
+<script type="text/javascript">
+    var decimals = 3;
+    var presets = {
+        '': null,
+        '13 - SP415': {tMax: 13.06, eMax: 11.53, threadWidth: 1.14, angleDeg: 3, angleArcmin: 11, tolerance: 0.2},
+        '15 - SP415': {tMax: 14.76, eMax: 13.23, threadWidth: 1.14, angleDeg: 2, angleArcmin: 48, tolerance: 0.2},
+        '18 - SP400, SP410, SP415': {tMax: 17.88, eMax: 15.75, threadWidth: 2.13, angleDeg: 3, angleArcmin: 30, tolerance: 0.2},
+        '20 - SP400, SP410, SP415': {tMax: 19.89, eMax: 17.75, threadWidth: 2.13, angleDeg: 3, angleArcmin: 7, tolerance: 0.2},
+        '22 - SP400, SP410, SP415': {tMax: 21.89, eMax: 19.76, threadWidth: 2.13, angleDeg: 2, angleArcmin: 49, tolerance: 0.2},
+        '24 - SP400, SP410, SP415': {tMax: 23.87, eMax: 21.74, threadWidth: 2.13, angleDeg: 2, angleArcmin: 34, tolerance: 0.2},
+        '28 - SP400, SP410, SP415': {tMax: 27.64, eMax: 25.25, threadWidth: 2.39, angleDeg: 2, angleArcmin: 57, tolerance: 0.2},
+        '30 - SP400': {tMax: 28.62, eMax: 26.23, threadWidth: 2.39, angleDeg: 2, angleArcmin: 51, tolerance: 0.2},
+        '33 - SP400, SP415': {tMax: 32.14, eMax: 29.74, threadWidth: 2.39, angleDeg: 2, angleArcmin: 31, tolerance: 0.2},
+        '35 - SP400': {tMax: 34.64, eMax: 32.25, threadWidth: 2.39, angleDeg: 2, angleArcmin: 21, tolerance: 0.2},
+        '38 - SP400': {tMax: 37.5, eMax: 35.1, threadWidth: 2.39, angleDeg: 2, angleArcmin: 9, tolerance: 0.2},
+        '40 - SP400': {tMax: 40.13, eMax: 37.75, threadWidth: 2.39, angleDeg: 2, angleArcmin: 0, tolerance: 0.2},
+        '43 - SP400': {tMax: 42, eMax: 39.62, threadWidth: 2.39, angleDeg: 1, angleArcmin: 55, tolerance: 0.2},
+        '45 - SP400': {tMax: 44.2, eMax: 41.81, threadWidth: 2.39, angleDeg: 1, angleArcmin: 49, tolerance: 0.2},
+        '48 - SP400': {tMax: 47.5, eMax: 45.11, threadWidth: 2.39, angleDeg: 1, angleArcmin: 41, tolerance: 0.2},
+        '51 - SP400': {tMax: 50, eMax: 47.6, threadWidth: 2.39, angleDeg: 1, angleArcmin: 36, tolerance: 0.2},
+        '53 - SP400': {tMax: 52.5, eMax: 50.11, threadWidth: 2.39, angleDeg: 1, angleArcmin: 31, tolerance: 0.2},
+        '58 - SP400': {tMax: 56.5, eMax: 54.1, threadWidth: 2.39, angleDeg: 1, angleArcmin: 25, tolerance: 0.2},
+        '60 - SP400': {tMax: 59.5, eMax: 57.1, threadWidth: 2.39, angleDeg: 1, angleArcmin: 20, tolerance: 0.2},
+        '63 - SP400': {tMax: 62.51, eMax: 60.12, threadWidth: 2.39, angleDeg: 1, angleArcmin: 16, tolerance: 0.2},
+        '66 - SP400': {tMax: 65.5, eMax: 63.12, threadWidth: 2.39, angleDeg: 1, angleArcmin: 13, tolerance: 0.2},
+        '70 - SP400': {tMax: 69.5, eMax: 67, threadWidth: 2.39, angleDeg: 1, angleArcmin: 8, tolerance: 0.2},
+        '75 - SP400': {tMax: 74, eMax: 71.6, threadWidth: 2.39, angleDeg: 1, angleArcmin: 4, tolerance: 0.2},
+        '77 - SP400': {tMax: 77.1, eMax: 74.7, threadWidth: 2.39, angleDeg: 1, angleArcmin: 1, tolerance: 0.2},
+        '83 - SP400': {tMax: 83, eMax: 80, threadWidth: 3.05, angleDeg: 1, angleArcmin: 9, tolerance: 0.2},
+        '89 - SP400': {tMax: 89.18, eMax: 86.12, threadWidth: 3.05, angleDeg: 1, angleArcmin: 4, tolerance: 0.2},
+        '100 - SP400': {tMax: 100, eMax: 96.95, threadWidth: 3.05, angleDeg: 0, angleArcmin: 59, tolerance: 0.2},
+        '110 - SP400': {tMax: 110, eMax: 107, threadWidth: 3.05, angleDeg: 0, angleArcmin: 51, tolerance: 0.2},
+        '120 - SP400': {tMax: 120, eMax: 117, threadWidth: 3.05, angleDeg: 0, angleArcmin: 47, tolerance: 0.2},
+    };
+
+    function populatePresets() {
+        $.each(presets, function (name) {
+            var option = new Option(name);
+            $("#threadPreset").append(option);
+        });
+    }
+
+    function loadPreset() {
+        var selection = $("#threadPreset").val();
+        var config = presets[selection];
+        if (config) {
+            $("#tMax").val(config.tMax);
+            $("#eMax").val(config.eMax);
+            $("#threadWidth").val(config.threadWidth);
+            $("#angleDegrees").val(config.angleDeg);
+            $("#angleArcmins").val(config.angleArcmin);
+            $("#tolerance").val(config.tolerance);
+        }
+
+        calculate();
+    }
+
+    function getFloatById(id) {
+        return parseFloat($("#" + id).val());
+    }
+
+    function getTanDeg(deg) {
+        var rad = deg * Math.PI / 180;
+        return Math.tan(rad);
+    }
+
+    function calculate() {
+        var tMax = getFloatById("tMax");
+        var eMax = getFloatById("eMax");
+        var threadWidth = getFloatById("threadWidth");
+        var angleDegrees = getFloatById("angleDegrees");
+        var angleArcmins = getFloatById("angleArcmins");
+        var tolerance = getFloatById("tolerance");
+
+        var threadDiameter = tMax + tolerance;
+        var pitch = getTanDeg(angleDegrees + angleArcmins / 60) * Math.PI * threadDiameter;
+        var sectionHeight = getTanDeg(60) * threadWidth / 2;
+        var holeDiameter = eMax + tolerance;
+
+        $("#threadDiameter").val(threadDiameter.toFixed(decimals));
+        $("#pitch").val(pitch.toFixed(decimals));
+        $("#height").val(sectionHeight.toFixed(decimals));
+        $("#holeDiameter").val(holeDiameter.toFixed(decimals));
+    }
+
+    window.onload = populatePresets;
+</script>
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="threadPreset">Preset</label>
+            <select id="threadPreset" onchange="loadPreset()"><option></option><option>13 - SP415</option><option>15 - SP415</option><option>18 - SP400, SP410, SP415</option><option>20 - SP400, SP410, SP415</option><option>22 - SP400, SP410, SP415</option><option>24 - SP400, SP410, SP415</option><option>28 - SP400, SP410, SP415</option><option>30 - SP400</option><option>33 - SP400, SP415</option><option>35 - SP400</option><option>38 - SP400</option><option>40 - SP400</option><option>43 - SP400</option><option>45 - SP400</option><option>48 - SP400</option><option>51 - SP400</option><option>53 - SP400</option><option>58 - SP400</option><option>60 - SP400</option><option>63 - SP400</option><option>66 - SP400</option><option>70 - SP400</option><option>75 - SP400</option><option>77 - SP400</option><option>83 - SP400</option><option>89 - SP400</option><option>100 - SP400</option><option>110 - SP400</option><option>120 - SP400</option></select>
+        </div>
+    </fieldset>
+</form>
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <legend>Neck finish specifications</legend>
+        <div class="pure-control-group">
+            <label for="tMax">T<sub>max</sub></label>
+            <input type="text" id="tMax" placeholder="thread outside diameter">
+            <!--            <span class="pure-form-message-inline">This is a required field.</span>-->
+        </div>
+        <div class="pure-control-group">
+            <label for="eMax">E<sub>max</sub></label>
+            <input type="text" id="eMax" placeholder="neck outside diameter">
+        </div>
+        <div class="pure-control-group">
+            <label for="threadWidth">Thread width (<i>a</i>)</label>
+            <input type="text" id="threadWidth" placeholder="thread width">
+        </div>
+        <div class="pure-control-group">
+            <label for="aligned_angle">Helix angle β</label>
+            <span id="aligned_angle">
+                <input type="number" id="angleDegrees" placeholder="degrees">
+                <span class="pure-form-message-inline">°</span>
+                <input type="number" id="angleArcmins" placeholder="arcminutes">
+                <span class="pure-form-message-inline">′</span>
+            </span>
+        </div>
+        <div class="pure-control-group">
+            <label for="tolerance">Tolerance</label>
+            <input type="text" id="tolerance" placeholder="tolerance">
+            <span class="pure-form-message-inline">0.2 mm is suggested</span>
+        </div>
+        <div class="pure-controls">
+            <button type="button" class="pure-button pure-button-primary" onclick="calculate()">Calculate</button>
+        </div>
+    </fieldset>
+</form>
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <legend>Cap thread parameters</legend>
+        <div class="pure-control-group">
+            <label for="threadDiameter">Diameter</label>
+            <input type="text" id="threadDiameter" value="" readonly="">
+        </div>
+        <div class="pure-control-group">
+            <label for="pitch">Pitch</label>
+            <input type="text" id="pitch" value="" readonly="">
+        </div>
+        <div class="pure-control-group">
+            <label for="height">Section height</label>
+            <input type="text" id="height" value="" readonly="">
+        </div>
+        <div class="pure-control-group">
+            <label for="holeDiameter">Hole diameter</label>
+            <input type="text" id="holeDiameter" value="" readonly="">
+            <span class="pure-form-message-inline">Used to flatten the tip of the thread</span>
+        </div>
+    </fieldset>
+</form>
+
+<h3>References</h3>
+<p><a href="https://www.mjspackaging.com/resources/training-technical-specs/neck-finish-information">How to identify the neck finish on a bottle</a></p>
+<p><a href="https://www.youtube.com/watch?v=-BS9KR-B9U4">How to model a threaded cap in Fusion 360</a></p>
+<p><a href="https://www.premierformtools.co.uk/assets/pdf/DC18.pdf">Helix angle calcuation</a></p>
+<p><a href="https://www.noupoi.net/static/thread_specs.xlsx">Preset calculation spreadsheet</a></p>
+        </section>
+
+
+    </article>
+
+
+  
+</body></html>

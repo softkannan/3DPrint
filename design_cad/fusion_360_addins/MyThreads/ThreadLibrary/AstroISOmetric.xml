@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+When I designed the 3D printable  LOWSPEC spectrometer, I noticed that threads like T-thread, c-thread, 1.25 inch filter thread and 2 inch filter thread were not present in the thread library of Fusion 360. So I made them myself.
+
+I've included a small xml file that you can download and then drop it in a specific folder. In this link you can read where to drop the file in order for it to work. A word of caution; in this specific path there is a version number that changes every time Fusion 360 gets an update. Now all the standard Fusion threads are automatically  copied to the new location except.... the custom threads 🙄. So be aware that if you can't find them any more it's probably due to a recent update and you'll have to manually move the file yourself.
+
+Applying a thread is easy. You first select the outside or inside of your cylinder shape, go to 'CREATE' and select 'Thread'. In the pop-up menu that appears select 'AstroISOmetric' at the 'Thread' drop-down. Then select the required size thread. In order for it to be 3D printed you should check the box 'Modeled' at the top.
+-->
+<ThreadType>
+  <Name>AstroISOmetric</Name>
+  <CustomName>AstroISOmetric</CustomName>
+  <Unit>mm</Unit>
+  <Angle>60</Angle>
+  <SortOrder>3</SortOrder>
+  	<ThreadSize>
+	  <Size>25.4</Size>
+	  <Designation>
+	  	<ThreadDesignation>C-mount</ThreadDesignation>
+		<CTD>C-mount</CTD>
+		<Pitch>0.79375</Pitch>
+		<Thread>
+        <Gender>external</Gender>
+        <Class>6g</Class>
+        <MajorDia>25.308</MajorDia>
+        <PitchDia>24.8349</PitchDia>
+        <MinorDia>24.4415</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>6H</Class>
+        <MajorDia>25.5291</MajorDia>
+        <PitchDia>24.9879</PitchDia>
+        <MinorDia>24.6831</MinorDia>
+        <TapDrill>24.65</TapDrill>
+      </Thread>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>4g6g</Class>
+        <MajorDia>25.308</MajorDia>
+        <PitchDia>24.8554</PitchDia>
+        <MinorDia>24.462</MinorDia>
+      </Thread>
+	  </Designation>
+	</ThreadSize>
+    <ThreadSize>
+		<Size>28.5</Size>
+		<Designation>
+		  <ThreadDesignation>1.25 inch filter</ThreadDesignation>
+		  <CTD>1.25 inch filter</CTD>
+		  <Pitch>0.6</Pitch>
+	  <Thread>
+        <Gender>external</Gender>
+        <Class>6g</Class>
+        <MajorDia>28.427</MajorDia>
+        <PitchDia>28.2352</PitchDia>
+        <MinorDia>27.848</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>6H</Class>
+        <MajorDia>28.5961</MajorDia>
+        <PitchDia>28.2352</PitchDia>
+        <MinorDia>28.0287</MinorDia>
+        <TapDrill>28</TapDrill>
+      </Thread>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>4g6g</Class>
+        <MajorDia>28.427</MajorDia>
+        <PitchDia>28.1267</PitchDia>
+        <MinorDia>27.8645</MinorDia>
+      </Thread>
+		</Designation>
+	</ThreadSize>
+	<ThreadSize>
+    <Size>42</Size>
+    <Designation>
+      <ThreadDesignation>M42x0.75</ThreadDesignation>
+      <CTD>M42x0.75</CTD>
+      <Pitch>0.75</Pitch>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>6g</Class>
+        <MajorDia>41.908</MajorDia>
+        <PitchDia>41.4409</PitchDia>
+        <MinorDia>41.0475</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>6H</Class>
+        <MajorDia>42.1201</MajorDia>
+        <PitchDia>41.5789</PitchDia>
+        <MinorDia>41.2831</MinorDia>
+        <TapDrill>41.25</TapDrill>
+      </Thread>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>4g6g</Class>
+        <MajorDia>41.908</MajorDia>
+        <PitchDia>41.4594</PitchDia>
+        <MinorDia>41.066</MinorDia>
+      </Thread>
+    </Designation>
+	</ThreadSize>
+	<ThreadSize>
+    <Size>48</Size>
+    <Designation>
+      <ThreadDesignation>2 inch filter thread</ThreadDesignation>
+      <CTD>2 inch filter thread</CTD>
+      <Pitch>0.75</Pitch>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>6g</Class>
+        <MajorDia>47.908</MajorDia>
+        <PitchDia>47.4409</PitchDia>
+        <MinorDia>47.0475</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>6H</Class>
+        <MajorDia>48.1201</MajorDia>
+        <PitchDia>47.5789</PitchDia>
+        <MinorDia>47.2831</MinorDia>
+        <TapDrill>47.25</TapDrill>
+      </Thread>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>4g6g</Class>
+        <MajorDia>47.908</MajorDia>
+        <PitchDia>47.4594</PitchDia>
+        <MinorDia>47.066</MinorDia>
+      </Thread>
+    </Designation>
+	</ThreadSize>
+
+</ThreadType>

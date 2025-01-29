@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ThreadType>
+  <Name>Custom ISO Metric profile</Name>
+  <CustomName>CUSTOM ISO Metric Profile</CustomName>
+  <Unit>mm</Unit>
+  <Angle>60</Angle>
+  <SortOrder>16</SortOrder>
+  <ThreadSize>
+    <Size>27.9</Size>
+    <Designation>
+      <ThreadDesignation>M28x2</ThreadDesignation>
+      <CTD>M27.9x2</CTD>
+      <Pitch>2.0</Pitch>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>6g</Class>
+        <MajorDia>27.750</MajorDia>
+        <PitchDia>26.500</PitchDia>
+        <MinorDia>25.5289</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>6H</Class>
+        <MajorDia>28.2500</MajorDia>
+        <PitchDia>27.0000</PitchDia>
+        <MinorDia>26.0224</MinorDia>
+        <TapDrill>26.0</TapDrill>
+      </Thread>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>4g6g</Class>
+        <MajorDia>27.800</MajorDia>
+        <PitchDia>26.61</PitchDia>
+        <MinorDia>25.5609</MinorDia>
+      </Thread>
+    <Designation/>
+  </ThreadSize>
+</ThreadType>

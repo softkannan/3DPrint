@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+creating SVL threads / SVL screw in Autodesk Fusion 360, specifically designed for laboratory glassware applications. The SVL (Standardized Versatile Laboratory) thread is commonly used in glassware connections to provide a secure and standardized fit between different pieces of laboratory equipment.
+
+The SVL thread is a standard used in laboratory glassware to ensure consistent and secure connections between components, allowing easy assembly and disassembly of experimental setups. This configuration was meticulously created based on precise measurements taken directly from a physical SVL threaded piece to ensure compatibility and accuracy.
+-->
+<ThreadType>
+  <ThreadForm>8</ThreadForm>
+  <Name>SVL Thread</Name>
+  <CustomName>SVL Thread</CustomName>
+  <Unit>mm</Unit>
+  <Angle>90</Angle>
+  <SortOrder>12</SortOrder>
+  <ThreadSize>
+    <Size>18.00</Size>
+    <Designation>
+      <ThreadDesignation>SVL 18</ThreadDesignation>
+      <CTD>SVL 18</CTD>
+      <Pitch>3.00</Pitch>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>6g</Class>
+        <MajorDia>18.00</MajorDia>
+        <PitchDia>17.00</PitchDia>
+        <MinorDia>16.00</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>6H</Class>
+        <MajorDia>17.50</MajorDia>
+        <PitchDia>16.50</PitchDia>
+        <MinorDia>15.50</MinorDia>
+        <TapDrill>15.40</TapDrill>
+      </Thread>
+    </Designation>
+  </ThreadSize>
+  <ThreadSize>
+    <Size>24</Size>
+    <Designation>
+      <ThreadDesignation>SVL 24</ThreadDesignation>
+      <CTD>SVL 24</CTD>
+      <Pitch>3.00</Pitch>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>6g</Class>
+        <MajorDia>23.20</MajorDia>
+        <PitchDia>22.20</PitchDia>
+        <MinorDia>21.20</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>6H</Class>
+        <MajorDia>23.75</MajorDia>
+        <PitchDia>22.75</PitchDia>
+        <MinorDia>21.75</MinorDia>
+        <TapDrill>21.65</TapDrill>
+      </Thread>
+    </Designation>
+  </ThreadSize>
+  <ThreadSize>
+    <Size>25</Size>
+    <Designation>
+      <ThreadDesignation>SVL 25</ThreadDesignation>
+      <CTD>SVL 25</CTD>
+      <Pitch>3.00</Pitch>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>6g</Class>
+        <MajorDia>24.70</MajorDia>
+        <PitchDia>23.70</PitchDia>
+        <MinorDia>22.70</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>6H</Class>
+        <MajorDia>24.50</MajorDia>
+        <PitchDia>23.50</PitchDia>
+        <MinorDia>22.50</MinorDia>
+        <TapDrill>22.40</TapDrill>
+      </Thread>
+    </Designation>
+  </ThreadSize>
+</ThreadType>

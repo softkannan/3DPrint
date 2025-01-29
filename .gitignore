@@ -11,3 +11,5 @@ slicer/ender3/for_klipper/**/printer/
 slicer/ender3/for_klipper/**/definitions/
 slicer/ender3/for_klipper/**/extruders/
 slicer/ender3/for_klipper/**/quality/
+design_cad/**/__pycache__/
+*.pyc

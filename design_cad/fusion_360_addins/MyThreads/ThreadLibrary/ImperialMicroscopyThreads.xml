@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ThreadType>
+  <Name>Imperial Microscopy threads</Name>
+  <CustomName>RMS Imperial Microscopy Threads</CustomName>
+  <Unit>in</Unit>
+  <Angle>60</Angle>
+  <SortOrder>2</SortOrder>
+  <ThreadSize>
+    <Size>0.800</Size>
+    <Designation>
+      <ThreadDesignation>0.800x36 RMS</ThreadDesignation>
+      <CTD>0.800x36</CTD>
+      <TPI>36.0</TPI>
+      <Thread>
+        <Gender>internal</Gender>
+        <Class>UNS-2B</Class>
+        <MajorDia>0.800</MajorDia>
+        <PitchDia>0.7820</PitchDia>
+        <MinorDia>0.770</MinorDia>
+      </Thread>
+      <Thread>
+        <Gender>external</Gender>
+        <Class>UNS-2A</Class>
+        <MajorDia>0.7934</MajorDia>
+        <PitchDia>0.7774</PitchDia>
+        <MinorDia>0.7688</MinorDia>
+        <TapDrill>.7656</TapDrill>
+      </Thread>
+      </Designation>
+  </ThreadSize>
+</ThreadType>
