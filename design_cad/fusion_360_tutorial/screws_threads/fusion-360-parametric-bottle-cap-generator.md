@@ -56,6 +56,8 @@ All this yields the successful basic generator, embedded below …
 
 <iframe src="https://myhub.autodesk360.com/ue2cecd93/shares/public/SH9285eQTcf875d3c539495c089187ac95b8?mode=embed" width="95%" height="500" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
 
+- [Download Parametric+Bottle+Cap.f3d](resource/Parametric+Bottle+Cap.f3d)
+
 … however, what fun would a custom cap generator be without a little customization. The generator includes four different body styles,
 
 1. Plain
