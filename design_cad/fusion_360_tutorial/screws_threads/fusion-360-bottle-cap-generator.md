@@ -2,31 +2,32 @@
 
 I've needed screw on lids for bottles and jars several times since I started 3D printing, I've always created a one-off design each time. I've used my experience and knowledge about making lids along with my experience building robust parameterized designs in Fusion 360 to create this generator.
 
-I gathered a bunch of plastic and glass bottles and discovered they are mostly very similar despite being different size. Firstly, the threads are usually 3mm apart, usually “one start” (a single line of thread) and almost always a bit under 1mm thread height. This design can make less common threads but *for the common case*, you only need one measurement, the ***Outside_Diameter***** **of the threads, **A** in this diagram. Make sure you measure from the tip of the thread on one side to the tip of the thread on the other, calipers work best.
+I gathered a bunch of plastic and glass bottles and discovered they are mostly very similar despite being different size. Firstly, the threads are usually 3mm apart, usually “one start” (a single line of thread) and almost always a bit under 1mm thread height. This design can make less common threads but *for the common case*, you only need one measurement, the ***Outside_Diameter*** of the threads, **A** in this diagram. Make sure you measure from the tip of the thread on one side to the tip of the thread on the other, calipers work best.
 
 ![fusion-360-bottle-cap-generator_bottle-diagram.png](images/fusion-360-bottle-cap-generator_bottle-diagram.png)
 
-I have a few bottles that have multiple ***Thread_Starts*** (**E**) but usually there's just one. You have to spin the bottle around and carefully examine it to count thread starts. *Thread_Starts* is the ***COUNT*** of thread starts, **not** a measurement of length or distance.
+I have a few bottles that have multiple ***Thread_Starts*** (**E**) but usually there's just one. You have to spin the bottle around and carefully examine it to count thread starts. 
 
-**C** is the ***Thread_To_Thread_Distance*** (pitch), it's a bit tricky to measure accurately, in my experience if it looks anywhere near to 3mm, you should assume 3.0mm. More than 90% of the bottles I've looked at use 3.0mm.
+- **A** is the ***Outside_Diameter*** of the threads. Make sure you measure from the tip of the thread on one side to the tip of the thread on the other, calipers work best.
+- **E** is the ***Thread_Start*** (count), it is the `COUNT` of thread starts, **not** a measurement of length or distance.
+- **C** is the ***Thread_To_Thread_Distance*** (pitch), it's a bit tricky to measure accurately, in my experience if it looks anywhere near to 3mm, you should assume 3.0mm. More than 90% of the bottles I've looked at use 3.0mm.
+- **D** is the ***Inside_Cap_Height***  is 10mm by default which is ok for most caps, you can modify that for taller or shorter caps.
+- **B** value for ***Base_Outside_Diameter***. It's the outside diameter of the neck of the bottle ***without ***the threads.
+  > **Note:** For bottle that have unusually thick or thin threads, you can input the `B` value.
 
-The ***Inside_Cap_Height*** (**D**) is 10mm by default which is ok for most caps, you can modify that for taller or shorter caps.
-
-For bottle that have unusually thick or thin threads, you can input the **B** value for ***Base_Outside_Diameter***. It's the outside diameter of the neck of the bottle ***without ***the threads.
-
-**Favorite Parameters**
+## Favorite Parameters
 
 ![fusion-360-bottle-cap-generator_image.webp](images/fusion-360-bottle-cap-generator_image_fav.webp)
 
-**All Parameters**
+## All Parameters
 
 ![fusion-360-bottle-cap-generator_image.webp](images/fusion-360-bottle-cap-generator_image_all.webp)
 
-**Using The Generator**
+# Using The Generator
 
 Required: Working Fusion 360 installation (free for personal use)
 
-Steps:
+**Steps:**
 
 - Download the f3d and open in FUsion 360
 - Open the PARAMETERS window SHIFT-P or Modify > Change Parameters in the design workspace
